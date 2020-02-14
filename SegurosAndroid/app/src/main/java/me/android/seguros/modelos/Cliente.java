@@ -1,7 +1,5 @@
 package me.android.seguros.modelos;
 
-import java.util.Objects;
-
 public class Cliente {
     private final String dni;
     private String nombre;
