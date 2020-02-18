@@ -13,5 +13,5 @@
     <string name="accion_alternar_vendedor">Hacer vendedor</string>
     <string name="seccion_crear_usuarios">Crear usuarios</string>
     <string name="seccion_gestionar_tipos">Gestionar tipos de seguros</string>
-    <string name="seccion_gestionar_usuarios">Gestionar tipos de seguros</string>
+    <string name="seccion_gestionar_usuarios">Gestionar usuarios</string>
 </resources>
