@@ -4,4 +4,14 @@
     <string name="nombre_usuario">Nombre de usuario</string>
     <string name="contrasena">Contraseña</string>
     <string name="accion_iniciar_sesion">Iniciar sesión</string>
+    <string name="accion_borrar">Borrar</string>
+    <string name="seccion_crear_tipos">Crear tipo de seguros</string>
+    <string name="accion_anadir">Añadir</string>
+    <string name="administracion">Administración</string>
+    <string name="accion_crear_usuario">Crear usuario</string>
+    <string name="accion_ver_usuario">Ver usuario</string>
+    <string name="accion_alternar_vendedor">Hacer vendedor</string>
+    <string name="seccion_crear_usuarios">Crear usuarios</string>
+    <string name="seccion_gestionar_tipos">Gestionar tipos de seguros</string>
+    <string name="seccion_gestionar_usuarios">Gestionar tipos de seguros</string>
 </resources>
