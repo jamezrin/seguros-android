@@ -36,11 +36,11 @@
         android:layout_width="373dp"
         android:layout_height="20dp"
         android:text="@string/seccion_crear_tipos"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/editText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4" />
+        app:layout_constraintTop_toBottomOf="@+id/button5" />
 
     <EditText
         android:id="@+id/editText"
@@ -57,8 +57,8 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="119dp"
-        android:layout_height="49dp"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
         android:text="@string/accion_borrar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,8 +68,8 @@
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="122dp"
-        android:layout_height="51dp"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
         android:text="@string/accion_anadir"
         app:layout_constraintBottom_toTopOf="@+id/textView5"
         app:layout_constraintEnd_toEndOf="parent"
@@ -79,8 +79,8 @@
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="134dp"
-        android:layout_height="49dp"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
         android:text="@string/accion_crear_usuario"
         app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
@@ -90,29 +90,29 @@
 
     <Spinner
         android:id="@+id/spinner3"
-        android:layout_width="373dp"
-        android:layout_height="49dp"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="230dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/button5"
+        app:layout_constraintEnd_toStartOf="@+id/button9"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <Button
         android:id="@+id/button5"
-        android:layout_width="137dp"
-        android:layout_height="46dp"
+        android:layout_width="100dp"
+        android:layout_height="75dp"
         android:text="@string/accion_ver_usuario"
         app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button10"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/button4"
         app:layout_constraintTop_toBottomOf="@+id/spinner3" />
 
     <Button
         android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="75dp"
         android:text="@string/accion_alternar_vendedor"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toStartOf="@+id/button5"
@@ -129,7 +129,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/button3" />
 
     <EditText
         android:id="@+id/editText2"
@@ -146,8 +146,8 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="374dp"
-        android:layout_height="21dp"
+        android:layout_width="373dp"
+        android:layout_height="20dp"
         android:text="@string/seccion_crear_usuarios"
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -165,4 +165,26 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:text="@string/accion_borrar"
+        app:layout_constraintBottom_toTopOf="@+id/button10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/spinner3"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <Button
+        android:id="@+id/button10"
+        android:layout_width="100dp"
+        android:layout_height="75dp"
+        android:text="Crear seguro"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/button5"
+        app:layout_constraintTop_toBottomOf="@+id/button9" />
 </androidx.constraintlayout.widget.ConstraintLayout>
