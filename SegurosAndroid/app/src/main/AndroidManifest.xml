@@ -12,7 +12,8 @@
         <activity android:name=".actividades.ActividadAdmin"></activity>
         <activity android:name=".actividades.ActividadVendedor" />
         <activity android:name=".actividades.ActividadCliente" />
-        <activity android:name=".actividades.ActividadLogin">
+        <activity android:name=".actividades.ActividadLogin"/>
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
