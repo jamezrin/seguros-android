@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Seguros Android</string>
-
-
+    <string name="iniciar_sesion">Iniciar sesión</string>
+    <string name="nombre_usuario">Nombre de usuario</string>
+    <string name="contrasena">Contraseña</string>
+    <string name="accion_iniciar_sesion">Iniciar sesión</string>
 </resources>
