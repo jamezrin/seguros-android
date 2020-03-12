@@ -1,13 +1,18 @@
 package me.android.seguros.datos.modelos;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
+
+import org.jetbrains.annotations.NotNull;
 
 @Entity(tableName = "usuarios")
 public class Usuario {
     @PrimaryKey
     @ColumnInfo(name = "dni")
+    @NonNull
     private String dni;
 
     @ColumnInfo(name = "nombre")
@@ -31,11 +36,12 @@ public class Usuario {
     @ColumnInfo(name = "borrado")
     private boolean borrado;
 
-    public Usuario(String dni) {
+    @Ignore
+    public Usuario(@NotNull String dni) {
         this.dni = dni;
     }
 
-    public Usuario(String dni, String nombre, String apellidos, String direccion, String telefono, String contrasena, int idTipoUsuario, boolean borrado) {
+    public Usuario(@NotNull String dni, String nombre, String apellidos, String direccion, String telefono, String contrasena, int idTipoUsuario, boolean borrado) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -46,11 +52,12 @@ public class Usuario {
         this.borrado = borrado;
     }
 
+    @NotNull
     public String getDni() {
         return dni;
     }
 
-    public void setDni(String dni) {
+    public void setDni(@NonNull String dni) {
         this.dni = dni;
     }
 

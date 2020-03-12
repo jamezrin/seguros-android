@@ -3,23 +3,25 @@ package me.android.seguros.datos.modelos;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 
 @Entity(foreignKeys = {
-        @ForeignKey(entity = Usuario.class, parentColumns = "dni", childColumns = "dniCliente"),
-        @ForeignKey(entity = Usuario.class, parentColumns = "dni", childColumns = "dniVendedor"),
+        @ForeignKey(entity = Usuario.class, parentColumns = "dni", childColumns = "dni_cliente"),
+        @ForeignKey(entity = Usuario.class, parentColumns = "dni", childColumns = "dni_vendedor"),
 }, tableName = "seguros")
 public class Seguro {
     @PrimaryKey
     private int id;
 
     @ColumnInfo(name = "fecha_alta")
-    private OffsetDateTime fechaAlta;
+    private LocalDateTime fechaAlta;
 
     @ColumnInfo(name = "fecha_baja")
-    private OffsetDateTime fechaBaja;
+    private LocalDateTime fechaBaja;
 
     @ColumnInfo(name = "dni_cliente")
     private String dniCliente;
@@ -33,11 +35,12 @@ public class Seguro {
     @ColumnInfo(name = "borrado")
     private boolean borrado;
 
+    @Ignore
     public Seguro(int id) {
         this.id = id;
     }
 
-    public Seguro(int id, OffsetDateTime fechaAlta, OffsetDateTime fechaBaja, String dniCliente, String dniVendedor, int idTipoSeguro, boolean borrado) {
+    public Seguro(int id, LocalDateTime fechaAlta, LocalDateTime fechaBaja, String dniCliente, String dniVendedor, int idTipoSeguro, boolean borrado) {
         this.id = id;
         this.fechaAlta = fechaAlta;
         this.fechaBaja = fechaBaja;
@@ -55,19 +58,19 @@ public class Seguro {
         this.id = id;
     }
 
-    public OffsetDateTime getFechaAlta() {
+    public LocalDateTime getFechaAlta() {
         return fechaAlta;
     }
 
-    public void setFechaAlta(OffsetDateTime fechaAlta) {
+    public void setFechaAlta(LocalDateTime fechaAlta) {
         this.fechaAlta = fechaAlta;
     }
 
-    public OffsetDateTime getFechaBaja() {
+    public LocalDateTime getFechaBaja() {
         return fechaBaja;
     }
 
-    public void setFechaBaja(OffsetDateTime fechaBaja) {
+    public void setFechaBaja(LocalDateTime fechaBaja) {
         this.fechaBaja = fechaBaja;
     }
 

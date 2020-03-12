@@ -2,6 +2,7 @@ package me.android.seguros.datos.modelos;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "tipos_usuario")
@@ -15,6 +16,7 @@ public class TipoUsuario {
     @ColumnInfo(name = "borrado")
     private boolean borrado;
 
+    @Ignore
     public TipoUsuario(int id) {
         this.id = id;
     }
