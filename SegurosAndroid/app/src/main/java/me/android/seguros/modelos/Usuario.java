@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo;
 import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.Relation;
 
 @Entity
 public class Usuario {
@@ -26,8 +27,8 @@ public class Usuario {
     @ColumnInfo(name = "contrasena")
     private String contrasena;
 
-    @Embedded
-    private TipoUsuario tipoUsuario;
+    @ColumnInfo(name = "id_tipo_usuario")
+    private int idTipoUsuario;
 
     @ColumnInfo(name = "borrado")
     private boolean borrado;
@@ -36,14 +37,14 @@ public class Usuario {
         this.dni = dni;
     }
 
-    public Usuario(String dni, String nombre, String apellidos, String direccion, String telefono, String contrasena, TipoUsuario tipoUsuario, boolean borrado) {
+    public Usuario(String dni, String nombre, String apellidos, String direccion, String telefono, String contrasena, int idTipoUsuario, boolean borrado) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.direccion = direccion;
         this.telefono = telefono;
         this.contrasena = contrasena;
-        this.tipoUsuario = tipoUsuario;
+        this.idTipoUsuario = idTipoUsuario;
         this.borrado = borrado;
     }
 
@@ -95,12 +96,12 @@ public class Usuario {
         this.contrasena = contrasena;
     }
 
-    public TipoUsuario getTipoUsuario() {
-        return tipoUsuario;
+    public int getIdTipoUsuario() {
+        return idTipoUsuario;
     }
 
-    public void setTipoUsuario(TipoUsuario tipoUsuario) {
-        this.tipoUsuario = tipoUsuario;
+    public void setIdTipoUsuario(int idTipoUsuario) {
+        this.idTipoUsuario = idTipoUsuario;
     }
 
     public boolean isBorrado() {
@@ -120,7 +121,7 @@ public class Usuario {
                 ", direccion='" + direccion + '\'' +
                 ", telefono='" + telefono + '\'' +
                 ", contrasena='" + contrasena + '\'' +
-                ", tipoUsuario=" + tipoUsuario +
+                ", idTipoUsuario=" + idTipoUsuario +
                 ", borrado=" + borrado +
                 '}';
     }

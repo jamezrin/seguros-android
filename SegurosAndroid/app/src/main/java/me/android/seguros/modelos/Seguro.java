@@ -5,6 +5,7 @@ import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
+import androidx.room.Relation;
 
 import java.time.OffsetDateTime;
 
@@ -28,8 +29,8 @@ public class Seguro {
     @ColumnInfo(name = "dni_vendedor")
     private String dniVendedor;
 
-    @Embedded
-    private TipoSeguro tipoSeguro;
+    @ColumnInfo(name = "id_tipo_seguro")
+    private int idTipoSeguro;
 
     @ColumnInfo(name = "borrado")
     private boolean borrado;
@@ -38,13 +39,13 @@ public class Seguro {
         this.id = id;
     }
 
-    public Seguro(int id, OffsetDateTime fechaAlta, OffsetDateTime fechaBaja, String dniCliente, String dniVendedor, TipoSeguro tipoSeguro, boolean borrado) {
+    public Seguro(int id, OffsetDateTime fechaAlta, OffsetDateTime fechaBaja, String dniCliente, String dniVendedor, int idTipoSeguro, boolean borrado) {
         this.id = id;
         this.fechaAlta = fechaAlta;
         this.fechaBaja = fechaBaja;
         this.dniCliente = dniCliente;
         this.dniVendedor = dniVendedor;
-        this.tipoSeguro = tipoSeguro;
+        this.idTipoSeguro = idTipoSeguro;
         this.borrado = borrado;
     }
 
@@ -88,12 +89,12 @@ public class Seguro {
         this.dniVendedor = dniVendedor;
     }
 
-    public TipoSeguro getTipoSeguro() {
-        return tipoSeguro;
+    public int getIdTipoSeguro() {
+        return idTipoSeguro;
     }
 
-    public void setTipoSeguro(TipoSeguro tipoSeguro) {
-        this.tipoSeguro = tipoSeguro;
+    public void setIdTipoSeguro(int idTipoSeguro) {
+        this.idTipoSeguro = idTipoSeguro;
     }
 
     public boolean isBorrado() {
@@ -112,7 +113,7 @@ public class Seguro {
                 ", fechaBaja=" + fechaBaja +
                 ", dniCliente='" + dniCliente + '\'' +
                 ", dniVendedor='" + dniVendedor + '\'' +
-                ", tipoSeguro=" + tipoSeguro +
+                ", idTipoSeguro=" + idTipoSeguro +
                 ", borrado=" + borrado +
                 '}';
     }
