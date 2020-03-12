@@ -19,6 +19,9 @@ public interface SeguroDao {
     @Query("SELECT * FROM seguros WHERE id IN (:ids)")
     List<Seguro> loadAllByIds(int[] ids);
 
+    @Query("SELECT COUNT(*) FROM seguros")
+    int count();
+
     @Insert
     void insertAll(Seguro... users);
 

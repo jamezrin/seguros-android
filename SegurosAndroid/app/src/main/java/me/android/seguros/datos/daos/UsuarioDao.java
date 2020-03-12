@@ -18,6 +18,9 @@ public interface UsuarioDao {
     @Query("SELECT * FROM usuarios WHERE dni IN (:dnis)")
     List<Usuario> loadAllByDNIs(String[] dnis);
 
+    @Query("SELECT COUNT(*) FROM usuarios")
+    int count();
+
     @Insert
     void insertAll(Usuario... users);
 

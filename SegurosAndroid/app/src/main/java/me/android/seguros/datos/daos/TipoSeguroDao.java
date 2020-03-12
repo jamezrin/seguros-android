@@ -15,6 +15,9 @@ public interface TipoSeguroDao {
     @Query("SELECT * FROM tipos_seguro")
     List<TipoSeguro> getAll();
 
+    @Query("SELECT COUNT(*) FROM tipos_seguro")
+    int count();
+
     @Insert
     void insertAll(TipoSeguro... users);
 
