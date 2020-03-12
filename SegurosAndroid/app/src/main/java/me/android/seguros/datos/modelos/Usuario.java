@@ -1,12 +1,10 @@
-package me.android.seguros.modelos;
+package me.android.seguros.datos.modelos;
 
 import androidx.room.ColumnInfo;
-import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-import androidx.room.Relation;
 
-@Entity
+@Entity(tableName = "usuarios")
 public class Usuario {
     @PrimaryKey
     @ColumnInfo(name = "dni")

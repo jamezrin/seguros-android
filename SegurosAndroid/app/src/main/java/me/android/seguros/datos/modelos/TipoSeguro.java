@@ -1,10 +1,10 @@
-package me.android.seguros.modelos;
+package me.android.seguros.datos.modelos;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(tableName = "tipos_seguro")
 public class TipoSeguro {
     @PrimaryKey
     private int id;

@@ -1,10 +1,10 @@
-package me.android.seguros.modelos.relaciones;
+package me.android.seguros.datos.modelos.relaciones;
 
 import androidx.room.Embedded;
 import androidx.room.Relation;
 
-import me.android.seguros.modelos.TipoUsuario;
-import me.android.seguros.modelos.Usuario;
+import me.android.seguros.datos.modelos.TipoUsuario;
+import me.android.seguros.datos.modelos.Usuario;
 
 public class UsuarioConTipo {
     @Embedded

@@ -1,18 +1,16 @@
-package me.android.seguros.modelos;
+package me.android.seguros.datos.modelos;
 
 import androidx.room.ColumnInfo;
-import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
-import androidx.room.Relation;
 
 import java.time.OffsetDateTime;
 
 @Entity(foreignKeys = {
         @ForeignKey(entity = Usuario.class, parentColumns = "dni", childColumns = "dniCliente"),
         @ForeignKey(entity = Usuario.class, parentColumns = "dni", childColumns = "dniVendedor"),
-})
+}, tableName = "seguros")
 public class Seguro {
     @PrimaryKey
     private int id;
