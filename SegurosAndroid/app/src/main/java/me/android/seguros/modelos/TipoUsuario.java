@@ -5,7 +5,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class TipoSeguro {
+public class TipoUsuario {
     @PrimaryKey
     private int id;
 
@@ -15,11 +15,11 @@ public class TipoSeguro {
     @ColumnInfo(name = "borrado")
     private boolean borrado;
 
-    public TipoSeguro(int id) {
+    public TipoUsuario(int id) {
         this.id = id;
     }
 
-    public TipoSeguro(int id, String tipo, boolean borrado) {
+    public TipoUsuario(int id, String tipo, boolean borrado) {
         this.id = id;
         this.tipo = tipo;
         this.borrado = borrado;
@@ -47,12 +47,10 @@ public class TipoSeguro {
 
     @Override
     public String toString() {
-        return "TipoSeguro{" +
+        return "TipoUsuario{" +
                 "id=" + id +
                 ", tipo='" + tipo + '\'' +
                 ", borrado=" + borrado +
                 '}';
     }
 }
-
-

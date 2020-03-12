@@ -1,30 +1,58 @@
 package me.android.seguros.modelos;
 
-public class Cliente {
-    private final String dni;
+import androidx.room.ColumnInfo;
+import androidx.room.Embedded;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
+public class Usuario {
+    @PrimaryKey
+    @ColumnInfo(name = "dni")
+    private String dni;
+
+    @ColumnInfo(name = "nombre")
     private String nombre;
+
+    @ColumnInfo(name = "apellidos")
     private String apellidos;
+
+    @ColumnInfo(name = "direccion")
     private String direccion;
+
+    @ColumnInfo(name = "telefono")
     private String telefono;
+
+    @ColumnInfo(name = "contrasena")
     private String contrasena;
+
+    @Embedded
+    private TipoUsuario tipoUsuario;
+
+    @ColumnInfo(name = "borrado")
     private boolean borrado;
 
-    public Cliente(String dni) {
+    public Usuario(String dni) {
         this.dni = dni;
     }
 
-    public Cliente(String dni, String nombre, String apellidos, String direccion, String telefono, String contrasena, boolean borrado) {
+    public Usuario(String dni, String nombre, String apellidos, String direccion, String telefono, String contrasena, TipoUsuario tipoUsuario, boolean borrado) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.direccion = direccion;
         this.telefono = telefono;
         this.contrasena = contrasena;
+        this.tipoUsuario = tipoUsuario;
         this.borrado = borrado;
     }
 
     public String getDni() {
         return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
     }
 
     public String getNombre() {
@@ -67,6 +95,14 @@ public class Cliente {
         this.contrasena = contrasena;
     }
 
+    public TipoUsuario getTipoUsuario() {
+        return tipoUsuario;
+    }
+
+    public void setTipoUsuario(TipoUsuario tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
+    }
+
     public boolean isBorrado() {
         return borrado;
     }
@@ -77,13 +113,14 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente{" +
+        return "Usuario{" +
                 "dni='" + dni + '\'' +
                 ", nombre='" + nombre + '\'' +
                 ", apellidos='" + apellidos + '\'' +
                 ", direccion='" + direccion + '\'' +
                 ", telefono='" + telefono + '\'' +
                 ", contrasena='" + contrasena + '\'' +
+                ", tipoUsuario=" + tipoUsuario +
                 ", borrado=" + borrado +
                 '}';
     }
