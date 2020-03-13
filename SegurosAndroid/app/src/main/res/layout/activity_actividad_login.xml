@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/campo_usuario_login"
+        android:id="@+id/campo_dni_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="240dp"
@@ -40,15 +40,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/campo_usuario_login"
+        app:layout_constraintTop_toBottomOf="@+id/campo_dni_login"
         app:layout_constraintVertical_bias="0.127" />
 
     <TextView
         android:id="@+id/textView1"
         android:layout_width="213dp"
         android:layout_height="22dp"
-        android:text="@string/nombre_usuario"
-        app:layout_constraintBottom_toTopOf="@+id/campo_usuario_login"
+        android:text="@string/dni"
+        app:layout_constraintBottom_toTopOf="@+id/campo_dni_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

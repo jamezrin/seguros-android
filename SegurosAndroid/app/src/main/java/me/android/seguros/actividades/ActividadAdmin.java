@@ -1,8 +1,8 @@
 package me.android.seguros.actividades;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import me.android.seguros.R;
 

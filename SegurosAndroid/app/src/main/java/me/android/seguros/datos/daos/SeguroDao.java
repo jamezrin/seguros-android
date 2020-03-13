@@ -4,12 +4,10 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
-import androidx.room.Transaction;
 
 import java.util.List;
 
 import me.android.seguros.datos.modelos.Seguro;
-import me.android.seguros.datos.modelos.Usuario;
 
 @Dao
 public interface SeguroDao {

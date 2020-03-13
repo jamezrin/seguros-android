@@ -7,7 +7,6 @@ import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
 
 @Entity(foreignKeys = {
         @ForeignKey(entity = Usuario.class, parentColumns = "dni", childColumns = "dni_cliente"),

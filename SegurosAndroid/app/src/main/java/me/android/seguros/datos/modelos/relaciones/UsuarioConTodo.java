@@ -13,13 +13,13 @@ public class UsuarioConTodo {
     @Embedded
     private Usuario usuario;
 
-    @Relation(parentColumn = "id", entityColumn = "id_tipo_usuario")
+    @Relation(parentColumn = "id_tipo_usuario", entityColumn = "id")
     private TipoUsuario tipoUsuario;
 
-    @Relation(parentColumn = "id", entityColumn = "dni_cliente")
+    @Relation(parentColumn = "dni", entityColumn = "dni_cliente")
     private List<Seguro> segurosContratados;
 
-    @Relation(parentColumn = "id", entityColumn = "dni_vendedor")
+    @Relation(parentColumn = "dni", entityColumn = "dni_vendedor")
     private List<Seguro> segurosVendidos;
 
     public UsuarioConTodo(Usuario usuario, TipoUsuario tipoUsuario, List<Seguro> segurosContratados, List<Seguro> segurosVendidos) {

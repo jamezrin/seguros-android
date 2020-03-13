@@ -10,7 +10,7 @@ public class SeguroConTipo {
     @Embedded
     private Seguro seguro;
 
-    @Relation(parentColumn = "id", entityColumn = "id_tipo_seguro")
+    @Relation(parentColumn = "id_tipo_seguro", entityColumn = "id")
     private TipoSeguro tipoSeguro;
 
     public SeguroConTipo(Seguro seguro, TipoSeguro tipoSeguro) {

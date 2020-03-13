@@ -10,7 +10,7 @@ public class UsuarioConTipo {
     @Embedded
     private Usuario usuario;
 
-    @Relation(parentColumn = "id", entityColumn = "id_tipo_usuario")
+    @Relation(parentColumn = "id_tipo_usuario", entityColumn = "id")
     private TipoUsuario tipoUsuario;
 
     public UsuarioConTipo(Usuario usuario, TipoUsuario tipoUsuario) {

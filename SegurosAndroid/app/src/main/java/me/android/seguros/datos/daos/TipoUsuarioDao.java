@@ -7,7 +7,6 @@ import androidx.room.Query;
 
 import java.util.List;
 
-import me.android.seguros.datos.modelos.TipoSeguro;
 import me.android.seguros.datos.modelos.TipoUsuario;
 
 @Dao
