@@ -4,6 +4,7 @@ import android.content.Context;
 
 import androidx.room.Room;
 
+import me.android.seguros.datos.modelos.Seguro;
 import me.android.seguros.datos.modelos.TipoSeguro;
 import me.android.seguros.datos.modelos.TipoUsuario;
 import me.android.seguros.datos.modelos.Usuario;

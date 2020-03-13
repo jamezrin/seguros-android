@@ -106,12 +106,12 @@ public class ActividadAdmin extends AppCompatActivity {
 
                 try {
                     db.tipoSeguroDao().insertAll(tipoSeguro);
+
+                    // actualiza el spinner
+                    gestionarTiposSeguroSpinnerAdapter.add(tipoSeguro.getTipo());
                 } catch (SQLiteConstraintException e) {
                     Toast.makeText(v.getContext(), "Ya existe ese tipo de seguro", Toast.LENGTH_SHORT).show();
                 }
-
-                // actualiza el spinner
-                gestionarTiposSeguroSpinnerAdapter.add(tipoSeguro.getTipo());
             }
         });
 
@@ -122,14 +122,15 @@ public class ActividadAdmin extends AppCompatActivity {
                 String tipoSeguroSeleccionado = (String) gestionarTiposSeguroSpinner.getSelectedItem();
                 TipoSeguro tipoSeguro = db.tipoSeguroDao().findByName(tipoSeguroSeleccionado);
 
-                // por si las moscas
-                if (tipoSeguro == null) return;
+                if (tipoSeguro != null) {
+                    tipoSeguro.setBorrado(true);
+                    db.tipoSeguroDao().update(tipoSeguro);
 
-                tipoSeguro.setBorrado(true);
-                db.tipoSeguroDao().update(tipoSeguro);
-
-                // actualiza el spinner
-                gestionarTiposSeguroSpinnerAdapter.remove(tipoSeguro.getTipo());
+                    // actualiza el spinner
+                    gestionarTiposSeguroSpinnerAdapter.remove(tipoSeguro.getTipo());
+                } else {
+                    Toast.makeText(v.getContext(), "No se ha podido encontrar ese tipo de seguro", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

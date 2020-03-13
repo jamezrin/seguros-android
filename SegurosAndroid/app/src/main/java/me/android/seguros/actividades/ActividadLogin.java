@@ -23,6 +23,8 @@ public class ActividadLogin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actividad_login);
 
+        AppDatabaseWrapper.init(this, "seguros-app");
+
         final AppDatabase db = AppDatabaseWrapper.get();
         final TextView campoDni = findViewById(R.id.campo_dni_login);
         final TextView campoContrasena = findViewById(R.id.campo_contrasena_login);
