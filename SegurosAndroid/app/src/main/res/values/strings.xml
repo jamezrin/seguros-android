@@ -14,4 +14,7 @@
     <string name="seccion_crear_usuarios">Crear usuarios</string>
     <string name="seccion_gestionar_tipos">Gestionar tipos de seguros</string>
     <string name="seccion_gestionar_usuarios">Gestionar usuarios</string>
+    <string name="nombre_tipo_seguro">Nombre de tipo de seguro</string>
+    <string name="nombre_de_usuario">Nombre de usuario</string>
+    <string name="crear_seguro">Crear seguro</string>
 </resources>
