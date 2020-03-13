@@ -1,15 +1,27 @@
-package me.android.seguros.modelos;
+package me.android.seguros.datos.modelos;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "tipos_seguro")
 public class TipoSeguro {
-    private final int id;
-    private String tipo;
-    private int borrado;
+    @PrimaryKey
+    private int id;
 
+    @ColumnInfo(name = "tipo")
+    private String tipo;
+
+    @ColumnInfo(name = "borrado")
+    private boolean borrado;
+
+    @Ignore
     public TipoSeguro(int id) {
         this.id = id;
     }
 
-    public TipoSeguro(int id, String tipo, int borrado){
+    public TipoSeguro(int id, String tipo, boolean borrado) {
         this.id = id;
         this.tipo = tipo;
         this.borrado = borrado;
@@ -27,11 +39,11 @@ public class TipoSeguro {
         this.tipo = tipo;
     }
 
-    public int getBorrado() {
+    public boolean getBorrado() {
         return borrado;
     }
 
-    public void setBorrado(int borrado) {
+    public void setBorrado(boolean borrado) {
         this.borrado = borrado;
     }
 
