@@ -35,9 +35,7 @@ public class ActividadLogin extends AppCompatActivity {
                         campoContrasena.getText().toString()
                 );
 
-                if (usuario == null) {
-                    Toast.makeText(v.getContext(), "No se ha podido iniciar sesión", Toast.LENGTH_SHORT).show();
-                } else {
+                if (usuario != null) {
                     Toast.makeText(v.getContext(), "Has iniciado sesión como " + usuario.getUsuario().getNombre() + " " + usuario.getUsuario().getApellidos(), Toast.LENGTH_SHORT).show();
                     Toast.makeText(v.getContext(), "Tipo de usuario: " + usuario.getTipoUsuario().getTipo(), Toast.LENGTH_SHORT).show();
 
@@ -50,6 +48,8 @@ public class ActividadLogin extends AppCompatActivity {
                     } else {
                         Toast.makeText(v.getContext(), "No entendemos tu tipo de usuario", Toast.LENGTH_SHORT).show();
                     }
+                } else {
+                    Toast.makeText(v.getContext(), "No se ha podido iniciar sesión", Toast.LENGTH_SHORT).show();
                 }
             }
         });

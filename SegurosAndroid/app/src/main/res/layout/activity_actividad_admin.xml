@@ -139,7 +139,7 @@
             android:layout_width="230dp"
             android:layout_height="50dp"
             android:ems="10"
-            android:hint="@string/nombre_de_usuario"
+            android:hint="@string/dni"
             android:inputType="textPersonName"
             app:layout_constraintBottom_toTopOf="@+id/textView4"
             app:layout_constraintEnd_toStartOf="@+id/button3"

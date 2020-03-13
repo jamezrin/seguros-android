@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
         @ForeignKey(entity = Usuario.class, parentColumns = "dni", childColumns = "dni_vendedor"),
 }, tableName = "seguros")
 public class Seguro {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private int id;
 
     @ColumnInfo(name = "fecha_alta")

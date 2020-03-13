@@ -3,11 +3,14 @@ package me.android.seguros.datos.modelos;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "tipos_seguro")
+@Entity(tableName = "tipos_seguro", indices = {
+        @Index(value = {"tipo"}, unique = true)
+})
 public class TipoSeguro {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private int id;
 
     @ColumnInfo(name = "tipo")
@@ -17,8 +20,7 @@ public class TipoSeguro {
     private boolean borrado;
 
     @Ignore
-    public TipoSeguro(int id) {
-        this.id = id;
+    public TipoSeguro() {
     }
 
     public TipoSeguro(int id, String tipo, boolean borrado) {
@@ -56,5 +58,4 @@ public class TipoSeguro {
                 '}';
     }
 }
-
 
