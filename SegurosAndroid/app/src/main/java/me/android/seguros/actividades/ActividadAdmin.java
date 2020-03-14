@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteConstraintException;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -57,6 +59,41 @@ public class ActividadAdmin extends AppCompatActivity {
         gestionarUsuariosSpinner.setAdapter(gestionarUsuariosSpinnerAdapter);
         gestionarTiposSeguroSpinner.setAdapter(gestionarTiposSeguroSpinnerAdapter);
 
+        final Button botonBorrarUsuario = findViewById(R.id.administracion_6);
+        final Button botonHacerVendedor = findViewById(R.id.administracion_7);
+        final Button botonVerUsuario = findViewById(R.id.administracion_8);
+        final Button botonCrearSeguro = findViewById(R.id.administracion_9);
+
+        gestionarUsuariosSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String dniUsuarioSeleccionado = (String) parent.getSelectedItem();
+                Usuario usuario = db.usuarioDao().find(dniUsuarioSeleccionado);
+
+                if (usuario == null)
+                    return;
+
+                if (usuario.getIdTipoUsuario() == ID_USUARIO_VENDEDOR) {
+                    botonCrearSeguro.setEnabled(false);
+                    botonHacerVendedor.setEnabled(false);
+                } else {
+                    botonCrearSeguro.setEnabled(true);
+                    botonHacerVendedor.setEnabled(true);
+                }
+
+                botonBorrarUsuario.setEnabled(true);
+                botonVerUsuario.setEnabled(true);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                botonCrearSeguro.setEnabled(false);
+                botonHacerVendedor.setEnabled(false);
+                botonVerUsuario.setEnabled(false);
+                botonBorrarUsuario.setEnabled(false);
+            }
+        });
+
         actualizarSpinners();
 
         findViewById(R.id.administracion_3).setOnClickListener(new View.OnClickListener() {
@@ -99,7 +136,11 @@ public class ActividadAdmin extends AppCompatActivity {
 
                 if (usuario != null) {
                     usuario.setIdTipoUsuario(ID_USUARIO_VENDEDOR);
+
                     db.usuarioDao().update(usuario);
+
+                    botonCrearSeguro.setEnabled(false);
+                    botonHacerVendedor.setEnabled(false);
 
                     Toast.makeText(v.getContext(), "Se ha puesto a " + usuario.getDni() + " como vendedor", Toast.LENGTH_SHORT).show();
                 } else {

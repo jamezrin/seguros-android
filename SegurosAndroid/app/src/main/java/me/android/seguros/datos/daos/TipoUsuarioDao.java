@@ -4,9 +4,11 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
 
+import me.android.seguros.datos.modelos.TipoSeguro;
 import me.android.seguros.datos.modelos.TipoUsuario;
 
 @Dao
@@ -21,8 +23,11 @@ public interface TipoUsuarioDao {
     TipoUsuario find(String tipo);
 
     @Insert
-    void insertAll(TipoUsuario... users);
+    void insertAll(TipoUsuario... tiposUsuario);
 
     @Delete
-    void delete(TipoUsuario user);
+    void delete(TipoUsuario tipoUsuario);
+
+    @Update
+    void update(TipoUsuario tipoUsuario);
 }

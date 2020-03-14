@@ -14,14 +14,14 @@ import me.android.seguros.datos.AppDatabaseWrapper;
 import me.android.seguros.datos.modelos.Usuario;
 
 public class ActividadDatosUsuario extends AppCompatActivity {
-    private String dniUsuario = null;
     private Usuario usuarioActual = null;
+    private AppDatabase db = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actividad_datos_usuario);
-        final AppDatabase db = AppDatabaseWrapper.get();
+        db = AppDatabaseWrapper.get();
 
         final EditText campoDni = findViewById(R.id.datos_usuario_2);
         final EditText campoNombre = findViewById(R.id.datos_usuario_4);
@@ -30,10 +30,7 @@ public class ActividadDatosUsuario extends AppCompatActivity {
         final EditText campoTelefono = findViewById(R.id.datos_usuario_10);
         final EditText campoContrasena = findViewById(R.id.datos_usuario_12);
 
-        final Button botonGuardar = findViewById(R.id.datos_usuario_13);
-        final Button botonBorrar = findViewById(R.id.datos_usuario_14);
-
-        dniUsuario = getIntent().getStringExtra("dni_usuario");
+        final String dniUsuario = getIntent().getStringExtra("dni_usuario");
         campoDni.setText(dniUsuario);
 
         usuarioActual = db.usuarioDao().find(dniUsuario);
@@ -46,12 +43,13 @@ public class ActividadDatosUsuario extends AppCompatActivity {
             campoContrasena.setText(usuarioActual.getContrasena());
         }
 
-        botonGuardar.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.datos_usuario_13).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 boolean usuarioExistente = (usuarioActual != null);
 
                 if (!usuarioExistente) {
+                    assert dniUsuario != null;
                     usuarioActual = new Usuario(dniUsuario);
                 }
 
@@ -84,7 +82,7 @@ public class ActividadDatosUsuario extends AppCompatActivity {
             }
         });
 
-        botonBorrar.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.datos_usuario_14).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // sale de la actividad

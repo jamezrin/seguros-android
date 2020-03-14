@@ -35,8 +35,8 @@ public class Seguro {
     private boolean borrado;
 
     @Ignore
-    public Seguro(int id) {
-        this.id = id;
+    public Seguro() {
+
     }
 
     public Seguro(int id, LocalDateTime fechaAlta, LocalDateTime fechaBaja, String dniCliente, String dniVendedor, int idTipoSeguro, boolean borrado) {

@@ -13,7 +13,7 @@
         android:gravity="center"
         android:text="Creación de seguro"
         android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/crear_seguro_1"
+        app:layout_constraintBottom_toTopOf="@+id/crear_seguro_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,6 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:enabled="false"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/crear_seguro_4"
         app:layout_constraintEnd_toEndOf="parent"
@@ -71,7 +72,7 @@
         android:id="@+id/crear_seguro_5"
         android:layout_width="123dp"
         android:layout_height="45dp"
-        android:text="Fecha de Alta"
+        android:text="Tipo de Seguro"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/crear_seguro_7"
         app:layout_constraintEnd_toStartOf="@+id/crear_seguro_6"
@@ -79,81 +80,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/crear_seguro_3" />
 
-    <EditText
+    <Spinner
         android:id="@+id/crear_seguro_6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="210dp"
+        android:layout_height="50dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/crear_seguro_8"
+        app:layout_constraintBottom_toTopOf="@+id/crear_seguro_7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/crear_seguro_5"
         app:layout_constraintTop_toBottomOf="@+id/crear_seguro_4" />
 
-    <TextView
-        android:id="@+id/crear_seguro_7"
-        android:layout_width="123dp"
-        android:layout_height="45dp"
-        android:text="Fecha de Baja"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/crear_seguro_9"
-        app:layout_constraintEnd_toStartOf="@+id/crear_seguro_8"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/crear_seguro_5" />
-
-    <EditText
-        android:id="@+id/crear_seguro_8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/crear_seguro_10"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/crear_seguro_7"
-        app:layout_constraintTop_toBottomOf="@+id/crear_seguro_6" />
-
-    <TextView
-        android:id="@+id/crear_seguro_9"
-        android:layout_width="123dp"
-        android:layout_height="45dp"
-        android:text="Tipo de Seguro"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/crear_seguro_11"
-        app:layout_constraintEnd_toStartOf="@+id/crear_seguro_10"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/crear_seguro_7" />
-
-    <EditText
-        android:id="@+id/crear_seguro_10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/crear_seguro_11"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/crear_seguro_9"
-        app:layout_constraintTop_toBottomOf="@+id/crear_seguro_8" />
-
     <Button
-        android:id="@+id/crear_seguro_11"
+        android:id="@+id/crear_seguro_7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@android:color/holo_green_dark"
         android:text="Guardar cambios"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/crear_seguro_12"
+        app:layout_constraintEnd_toStartOf="@+id/crear_seguro_8"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/crear_seguro_9" />
+        app:layout_constraintTop_toBottomOf="@+id/crear_seguro_5" />
 
     <Button
-        android:id="@+id/crear_seguro_12"
+        android:id="@+id/crear_seguro_8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@android:color/holo_red_dark"
@@ -162,7 +115,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/crear_seguro_11"
-        app:layout_constraintTop_toBottomOf="@+id/crear_seguro_10" />
+        app:layout_constraintStart_toEndOf="@+id/crear_seguro_7"
+        app:layout_constraintTop_toBottomOf="@+id/crear_seguro_6" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

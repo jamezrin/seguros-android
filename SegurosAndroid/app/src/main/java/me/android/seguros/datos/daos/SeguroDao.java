@@ -21,8 +21,8 @@ public interface SeguroDao {
     int count();
 
     @Insert
-    void insertAll(Seguro... users);
+    void insertAll(Seguro... seguros);
 
     @Delete
-    void delete(Seguro user);
+    void delete(Seguro seguros);
 }

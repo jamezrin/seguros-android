@@ -17,6 +17,9 @@ public interface UsuarioDao {
     @Query("SELECT * FROM usuarios")
     List<Usuario> getAll();
 
+    @Query("SELECT * FROM usuarios JOIN tipos_seguro ON usuarios.id_tipo_usuario = tipos_seguro.id AND tipos_seguro.tipo = :tipo")
+    List<Usuario> getAllUserType(String tipo);
+
     @Query("SELECT * FROM usuarios WHERE dni IN (:dnis)")
     List<Usuario> loadAllByDNIs(String[] dnis);
 
@@ -36,11 +39,11 @@ public interface UsuarioDao {
     int count();
 
     @Insert
-    void insertAll(Usuario... users);
+    void insertAll(Usuario... usuarios);
 
     @Delete
-    void delete(Usuario user);
+    void delete(Usuario usuario);
 
     @Update
-    void update(Usuario user);
+    void update(Usuario usuario);
 }
