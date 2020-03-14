@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import me.android.seguros.R;
@@ -49,6 +50,7 @@ public class ActividadSeguroUsuario extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 seguroConTipo.getSeguro().setBorrado(true);
+                seguroConTipo.getSeguro().setFechaBaja(LocalDateTime.now());
 
                 db.seguroDao().update(seguroConTipo.getSeguro());
 
