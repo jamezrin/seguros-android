@@ -6,4 +6,105 @@
     android:layout_height="match_parent"
     tools:context=".actividades.ActividadVendedor">
 
+    <TextView
+        android:id="@+id/vendedor_0"
+        android:layout_width="266dp"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:text="Vendedor"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/vendedor_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/vendedor_1"
+        android:layout_width="386dp"
+        android:layout_height="24dp"
+        android:text="Crear usuarios"
+        app:layout_constraintBottom_toTopOf="@+id/vendedor_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vendedor_0" />
+
+    <EditText
+        android:id="@+id/vendedor_2"
+        android:layout_width="230dp"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:hint="@string/dni"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/vendedor_4"
+        app:layout_constraintEnd_toStartOf="@+id/vendedor_3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vendedor_1" />
+
+    <Button
+        android:id="@+id/vendedor_3"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:text="@string/accion_crear_usuario"
+        app:layout_constraintBottom_toTopOf="@+id/vendedor_4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/vendedor_2"
+        app:layout_constraintTop_toBottomOf="@+id/vendedor_1" />
+
+    <TextView
+        android:id="@+id/vendedor_4"
+        android:layout_width="373dp"
+        android:layout_height="20dp"
+        android:text="@string/seccion_gestionar_usuarios"
+        app:layout_constraintBottom_toTopOf="@+id/vendedor_5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vendedor_2" />
+
+    <Spinner
+        android:id="@+id/vendedor_5"
+        android:layout_width="385dp"
+        android:layout_height="49dp"
+        app:layout_constraintBottom_toTopOf="@+id/vendedor_6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vendedor_4" />
+
+    <Button
+        android:id="@+id/vendedor_6"
+        android:layout_width="157dp"
+        android:layout_height="52dp"
+        android:text="@string/crear_seguro"
+        app:layout_constraintBottom_toTopOf="@+id/vendedor_8"
+        app:layout_constraintEnd_toStartOf="@+id/vendedor_7"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vendedor_5" />
+
+    <Button
+        android:id="@+id/vendedor_7"
+        android:layout_width="157dp"
+        android:layout_height="52dp"
+        android:text="@string/accion_ver_usuario"
+        app:layout_constraintBottom_toTopOf="@+id/vendedor_8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/vendedor_6"
+        app:layout_constraintTop_toBottomOf="@+id/vendedor_5" />
+
+    <Button
+        android:id="@+id/vendedor_8"
+        android:layout_width="151dp"
+        android:layout_height="53dp"
+        android:text="Ver tus datos"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vendedor_6" />
 </androidx.constraintlayout.widget.ConstraintLayout>

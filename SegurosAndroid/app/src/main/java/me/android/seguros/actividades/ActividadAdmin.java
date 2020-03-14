@@ -116,14 +116,24 @@ public class ActividadAdmin extends AppCompatActivity {
                 Usuario usuario = db.usuarioDao().find(dniUsuarioSeleccionado);
 
                 if (usuario != null) {
-                    db.usuarioDao().delete(usuario);
+                    usuario.setBorrado(true);
+
+                    db.usuarioDao().update(usuario);
 
                     // actualizar el spinner
                     gestionarUsuariosSpinnerAdapter.remove(dniUsuarioSeleccionado);
 
-                    Toast.makeText(v.getContext(), "Se ha borrado el usuario seleccionado correctamente", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(
+                            v.getContext(),
+                            "Se ha borrado el usuario seleccionado correctamente",
+                            Toast.LENGTH_SHORT
+                    ).show();
                 } else {
-                    Toast.makeText(v.getContext(), "No se ha podido encontrar a ese usuario", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(
+                            v.getContext(),
+                            "No se ha podido encontrar a ese usuario",
+                            Toast.LENGTH_SHORT
+                    ).show();
                 }
             }
         });
@@ -142,9 +152,17 @@ public class ActividadAdmin extends AppCompatActivity {
                     botonCrearSeguro.setEnabled(false);
                     botonHacerVendedor.setEnabled(false);
 
-                    Toast.makeText(v.getContext(), "Se ha puesto a " + usuario.getDni() + " como vendedor", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(
+                            v.getContext(),
+                            "Se ha puesto a " + usuario.getDni() + " como vendedor",
+                            Toast.LENGTH_SHORT
+                    ).show();
                 } else {
-                    Toast.makeText(v.getContext(), "No se ha podido encontrar a ese usuario", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(
+                            v.getContext(),
+                            "No se ha podido encontrar a ese usuario",
+                            Toast.LENGTH_SHORT
+                    ).show();
                 }
             }
         });
@@ -160,7 +178,11 @@ public class ActividadAdmin extends AppCompatActivity {
                     intent.putExtra("dni_usuario", dniUsuarioSeleccionado);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(v.getContext(), "No se ha podido encontrar a ese usuario", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(
+                            v.getContext(),
+                            "No se ha podido encontrar a ese usuario",
+                            Toast.LENGTH_SHORT
+                    ).show();
                 }
             }
         });

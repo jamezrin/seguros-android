@@ -21,14 +21,14 @@ public interface TipoSeguroDao {
     @Query("SELECT * FROM tipos_seguro WHERE tipo = :tipoSeguro")
     TipoSeguro findByName(String tipoSeguro);
 
+    @Query("SELECT * FROM tipos_seguro WHERE id = :id")
+    TipoSeguro findById(int id);
+
     @Query("SELECT COUNT(*) FROM tipos_seguro")
     int count();
 
     @Insert
     void insertAll(TipoSeguro... tiposSeguro);
-
-    @Delete
-    void delete(TipoSeguro tipoSeguro);
 
     @Update
     void update(TipoSeguro tipoSeguro);

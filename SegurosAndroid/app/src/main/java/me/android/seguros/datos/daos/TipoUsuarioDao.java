@@ -25,9 +25,6 @@ public interface TipoUsuarioDao {
     @Insert
     void insertAll(TipoUsuario... tiposUsuario);
 
-    @Delete
-    void delete(TipoUsuario tipoUsuario);
-
     @Update
     void update(TipoUsuario tipoUsuario);
 }

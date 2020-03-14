@@ -13,7 +13,135 @@
         android:gravity="center"
         android:text="Información de Seguro"
         android:textSize="30dp"
-        tools:layout_editor_absoluteX="9dp"
-        tools:layout_editor_absoluteY="48dp" />
+        app:layout_constraintBottom_toTopOf="@+id/informacion_seguro_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/informacion_seguro_1"
+        android:layout_width="123dp"
+        android:layout_height="45dp"
+        android:text="Tipo"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/informacion_seguro_3"
+        app:layout_constraintEnd_toStartOf="@+id/informacion_seguro_2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/informacion_seguro_0" />
+
+    <EditText
+        android:id="@+id/informacion_seguro_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:enabled="false"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/informacion_seguro_4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/informacion_seguro_1"
+        app:layout_constraintTop_toBottomOf="@+id/informacion_seguro_0" />
+
+    <TextView
+        android:id="@+id/informacion_seguro_3"
+        android:layout_width="123dp"
+        android:layout_height="45dp"
+        android:text="Numero de poliza"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/informacion_seguro_5"
+        app:layout_constraintEnd_toStartOf="@+id/informacion_seguro_4"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/informacion_seguro_1" />
+
+    <EditText
+        android:id="@+id/informacion_seguro_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:enabled="false"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/informacion_seguro_6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/informacion_seguro_3"
+        app:layout_constraintTop_toBottomOf="@+id/informacion_seguro_2" />
+
+    <TextView
+        android:id="@+id/informacion_seguro_5"
+        android:layout_width="123dp"
+        android:layout_height="45dp"
+        android:text="Fecha de alta"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/informacion_seguro_7"
+        app:layout_constraintEnd_toStartOf="@+id/informacion_seguro_6"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/informacion_seguro_3" />
+
+    <EditText
+        android:id="@+id/informacion_seguro_6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:enabled="false"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/informacion_seguro_8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/informacion_seguro_5"
+        app:layout_constraintTop_toBottomOf="@+id/informacion_seguro_4" />
+
+    <TextView
+        android:id="@+id/informacion_seguro_7"
+        android:layout_width="123dp"
+        android:layout_height="45dp"
+        android:text="Vendedor"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/informacion_seguro_9"
+        app:layout_constraintEnd_toStartOf="@+id/informacion_seguro_8"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/informacion_seguro_5" />
+
+    <EditText
+        android:id="@+id/informacion_seguro_8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:enabled="false"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/informacion_seguro_10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/informacion_seguro_7"
+        app:layout_constraintTop_toBottomOf="@+id/informacion_seguro_6" />
+
+    <Button
+        android:id="@+id/informacion_seguro_10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Volver atrás"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/informacion_seguro_9"
+        app:layout_constraintTop_toBottomOf="@+id/informacion_seguro_8" />
+
+    <Button
+        android:id="@+id/informacion_seguro_9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:text="Dar de baja"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/informacion_seguro_10"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/informacion_seguro_7" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

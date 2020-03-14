@@ -37,7 +37,7 @@ public class ActividadCrearSeguroUsuario extends AppCompatActivity {
         final Spinner spinnerVendedor = findViewById(R.id.crear_seguro_4);
         final Spinner spinnerTipoSeguro = findViewById(R.id.crear_seguro_6);
 
-        String dniUsuario = getIntent().getStringExtra("dni_usuario");
+        final String dniUsuario = getIntent().getStringExtra("dni_usuario");
         campoCliente.setText(dniUsuario);
 
         usuarioActual = db.usuarioDao().find(dniUsuario);

@@ -36,9 +36,9 @@ public class SeguroConTipo {
 
     @Override
     public String toString() {
-        return "SeguroConTipo{" +
-                "seguro=" + seguro +
-                ", tipoSeguro=" + tipoSeguro +
-                '}';
+        return String.format("%s (codigo %d)",
+                tipoSeguro.getTipo(),
+                seguro.getId()
+        );
     }
 }

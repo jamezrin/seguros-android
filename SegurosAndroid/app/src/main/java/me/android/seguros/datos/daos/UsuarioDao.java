@@ -41,9 +41,6 @@ public interface UsuarioDao {
     @Insert
     void insertAll(Usuario... usuarios);
 
-    @Delete
-    void delete(Usuario usuario);
-
     @Update
     void update(Usuario usuario);
 }

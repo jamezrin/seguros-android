@@ -7,21 +7,21 @@
     tools:context=".actividades.ActividadCliente">
 
     <TextView
-        android:id="@+id/datos_cliente_0"
+        android:id="@+id/cliente_0"
         android:layout_width="266dp"
         android:layout_height="48dp"
         android:layout_marginTop="52dp"
         android:gravity="center"
-        android:text="Datos del cliente"
+        android:text="Cliente"
         android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/datos_cliente_1"
+        app:layout_constraintBottom_toTopOf="@+id/cliente_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/datos_cliente_1"
+        android:id="@+id/cliente_1"
         android:layout_width="386dp"
         android:layout_height="24dp"
         android:layout_marginBottom="20dp"
@@ -34,7 +34,7 @@
         app:layout_constraintVertical_bias="0.235" />
 
     <Spinner
-        android:id="@+id/datos_cliente_2"
+        android:id="@+id/cliente_2"
         android:layout_width="199dp"
         android:layout_height="55dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -45,19 +45,19 @@
         app:layout_constraintVertical_bias="0.291" />
 
     <Button
-        android:id="@+id/datos_cliente_3"
+        android:id="@+id/cliente_3"
         android:layout_width="155dp"
         android:layout_height="55dp"
         android:text="Ver seguro"
-        app:layout_constraintBottom_toTopOf="@+id/datos_cliente_4"
+        app:layout_constraintBottom_toTopOf="@+id/cliente_4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.644"
-        app:layout_constraintStart_toEndOf="@+id/datos_cliente_2"
+        app:layout_constraintStart_toEndOf="@+id/cliente_2"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.382" />
 
     <Button
-        android:id="@+id/datos_cliente_4"
+        android:id="@+id/cliente_4"
         android:layout_width="151dp"
         android:layout_height="53dp"
         android:text="Ver tus datos"
