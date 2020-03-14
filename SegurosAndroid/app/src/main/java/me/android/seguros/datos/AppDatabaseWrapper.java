@@ -9,6 +9,8 @@ import me.android.seguros.datos.modelos.TipoSeguro;
 import me.android.seguros.datos.modelos.TipoUsuario;
 import me.android.seguros.datos.modelos.Usuario;
 
+import static me.android.seguros.datos.modelos.Usuario.*;
+
 public class AppDatabaseWrapper {
     private static AppDatabase db;
 
@@ -28,17 +30,17 @@ public class AppDatabaseWrapper {
 
         if (db.tipoUsuarioDao().count() == 0) {
             db.tipoUsuarioDao().insertAll(
-                    new TipoUsuario(1, "Cliente", false),
-                    new TipoUsuario(2, "Vendedor", false),
-                    new TipoUsuario(3, "Admin", false)
+                    new TipoUsuario(ID_USUARIO_CLIENTE, "Cliente", false),
+                    new TipoUsuario(ID_USUARIO_VENDEDOR, "Vendedor", false),
+                    new TipoUsuario(ID_USUARIO_ADMIN, "Admin", false)
             );
         }
 
         if (db.usuarioDao().count() == 0) {
             db.usuarioDao().insertAll(
-                    new Usuario("00000000A", "Pepe", "Martinez", "Calle X", "600000000", "pass1", 3, false),
-                    new Usuario("00000000B", "Pepita", "Martin", "Calle Y", "600000001", "pass2", 2, false),
-                    new Usuario("00000000C", "Pepón", "Marín", "Calle Z", "600000002", "pass3", 1, false)
+                    new Usuario("00000000A", "Pepe", "Martinez", "Calle X", "600000000", "pass1", ID_USUARIO_ADMIN, false),
+                    new Usuario("00000000B", "Pepita", "Martin", "Calle Y", "600000001", "pass2", ID_USUARIO_VENDEDOR, false),
+                    new Usuario("00000000C", "Pepón", "Marín", "Calle Z", "600000002", "pass3", ID_USUARIO_CLIENTE, false)
             );
         }
     }

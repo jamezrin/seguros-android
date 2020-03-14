@@ -6,13 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".actividades.ActividadLogin">
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/iniciar_sesion_0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="76dp"
         android:text="@string/iniciar_sesion"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView1"
+        app:layout_constraintBottom_toTopOf="@+id/iniciar_sesion_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/campo_dni_login"
+        android:id="@+id/iniciar_sesion_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="240dp"
@@ -31,7 +31,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/campo_contrasena_login"
+        android:id="@+id/iniciar_sesion_4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -40,30 +40,30 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/campo_dni_login"
+        app:layout_constraintTop_toBottomOf="@+id/iniciar_sesion_2"
         app:layout_constraintVertical_bias="0.127" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/iniciar_sesion_1"
         android:layout_width="213dp"
         android:layout_height="22dp"
         android:text="@string/dni"
-        app:layout_constraintBottom_toTopOf="@+id/campo_dni_login"
+        app:layout_constraintBottom_toTopOf="@+id/iniciar_sesion_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/iniciar_sesion_3"
         android:layout_width="212dp"
         android:layout_height="25dp"
         android:text="@string/contrasena"
-        app:layout_constraintBottom_toTopOf="@+id/campo_contrasena_login"
+        app:layout_constraintBottom_toTopOf="@+id/iniciar_sesion_4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/boton_iniciar_sesion"
+        android:id="@+id/iniciar_sesion_5"
         android:layout_width="200dp"
         android:layout_height="45dp"
         android:backgroundTint="@color/colorPrimary"
@@ -72,5 +72,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/campo_contrasena_login" />
+        app:layout_constraintTop_toBottomOf="@+id/iniciar_sesion_4" />
 </androidx.constraintlayout.widget.ConstraintLayout>

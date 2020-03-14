@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import me.android.seguros.R;
 import me.android.seguros.datos.AppDatabase;
@@ -22,15 +23,15 @@ public class ActividadDatosUsuario extends AppCompatActivity {
         setContentView(R.layout.activity_actividad_datos_usuario);
         final AppDatabase db = AppDatabaseWrapper.get();
 
-        final EditText campoDni = findViewById(R.id.campo_dni_dash);
-        final EditText campoNombre = findViewById(R.id.campo_nombre_dash);
-        final EditText campoApellidos = findViewById(R.id.campo_apellidos_dash);
-        final EditText campoDireccion = findViewById(R.id.campo_direccion_dash);
-        final EditText campoTelefono = findViewById(R.id.campo_telefono_dash);
-        final EditText campoContrasena = findViewById(R.id.campo_contrasena_dash);
+        final EditText campoDni = findViewById(R.id.datos_usuario_2);
+        final EditText campoNombre = findViewById(R.id.datos_usuario_4);
+        final EditText campoApellidos = findViewById(R.id.datos_usuario_6);
+        final EditText campoDireccion = findViewById(R.id.datos_usuario_8);
+        final EditText campoTelefono = findViewById(R.id.datos_usuario_10);
+        final EditText campoContrasena = findViewById(R.id.datos_usuario_12);
 
-        final Button botonGuardar = findViewById(R.id.boton_guardar_cambios_dash);
-        final Button botonBorrar = findViewById(R.id.boton_volver_dash);
+        final Button botonGuardar = findViewById(R.id.datos_usuario_13);
+        final Button botonBorrar = findViewById(R.id.datos_usuario_14);
 
         dniUsuario = getIntent().getStringExtra("dni_usuario");
         campoDni.setText(dniUsuario);
@@ -63,8 +64,19 @@ public class ActividadDatosUsuario extends AppCompatActivity {
 
                 if (usuarioExistente) {
                     db.usuarioDao().update(usuarioActual);
+                    Toast.makeText(
+                            v.getContext(),
+                            "Se ha actualizado el usuario correctamente",
+                            Toast.LENGTH_SHORT
+                    ).show();
                 } else {
+                    usuarioActual.setIdTipoUsuario(1);
                     db.usuarioDao().insertAll(usuarioActual);
+                    Toast.makeText(
+                            v.getContext(),
+                            "Se ha creado el usuario correctamente",
+                            Toast.LENGTH_SHORT
+                    ).show();
                 }
 
                 // sale de la actividad

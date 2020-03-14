@@ -7,84 +7,64 @@
     tools:context=".actividades.ActividadCliente">
 
     <TextView
-        android:id="@+id/textView56"
-        android:layout_width="234dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="41dp"
-        android:layout_marginBottom="68dp"
+        android:id="@+id/datos_cliente_0"
+        android:layout_width="266dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="52dp"
         android:gravity="center"
         android:text="Datos del cliente"
         android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView79"
+        app:layout_constraintBottom_toTopOf="@+id/datos_cliente_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView79"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="32dp"
+        android:id="@+id/datos_cliente_1"
+        android:layout_width="386dp"
+        android:layout_height="24dp"
+        android:layout_marginBottom="20dp"
         android:text="Seguros contratados"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView56" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.235" />
 
     <Spinner
-        android:id="@+id/spinner3"
-        android:layout_width="0dp"
+        android:id="@+id/datos_cliente_2"
+        android:layout_width="199dp"
         android:layout_height="55dp"
-        android:layout_marginStart="22dp"
-        android:layout_marginLeft="22dp"
-        android:layout_marginEnd="19dp"
-        android:layout_marginRight="19dp"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.056"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button3" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.291" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/datos_cliente_3"
         android:layout_width="155dp"
         android:layout_height="55dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="212dp"
         android:text="Ver seguro"
-        app:layout_constraintBottom_toTopOf="@+id/button73"
+        app:layout_constraintBottom_toTopOf="@+id/datos_cliente_4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/spinner3"
-        app:layout_constraintTop_toBottomOf="@+id/textView79" />
+        app:layout_constraintHorizontal_bias="0.644"
+        app:layout_constraintStart_toEndOf="@+id/datos_cliente_2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.382" />
 
     <Button
-        android:id="@+id/button73"
-        android:layout_width="140dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="39dp"
-        android:layout_marginLeft="39dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:layout_marginBottom="160dp"
+        android:id="@+id/datos_cliente_4"
+        android:layout_width="151dp"
+        android:layout_height="53dp"
         android:text="Ver tus datos"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button38"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
-
-    <Button
-        android:id="@+id/button38"
-        android:layout_width="140dp"
-        android:layout_height="80dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginRight="28dp"
-        android:text="Cerrar sesión"
-        app:layout_constraintBaseline_toBaselineOf="@+id/button73"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button73" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.84" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

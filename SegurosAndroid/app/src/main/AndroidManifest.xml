@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".actividades.ActividadSeguroUsuario"></activity>
+        <activity android:name=".actividades.ActividadCrearSeguroUsuario"></activity>
+        <activity android:name=".actividades.ActividadSeguroUsuario" />
         <activity android:name=".actividades.ActividadDatosUsuario" />
         <activity android:name=".actividades.ActividadAdmin" />
         <activity android:name=".actividades.ActividadVendedor" />
@@ -22,4 +23,5 @@
             </intent-filter>
         </activity>
     </application>
+
 </manifest>

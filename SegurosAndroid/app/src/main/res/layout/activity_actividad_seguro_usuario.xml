@@ -6,4 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".actividades.ActividadSeguroUsuario">
 
+    <TextView
+        android:id="@+id/informacion_seguro_0"
+        android:layout_width="392dp"
+        android:layout_height="45dp"
+        android:gravity="center"
+        android:text="Información de Seguro"
+        android:textSize="30dp"
+        tools:layout_editor_absoluteX="9dp"
+        tools:layout_editor_absoluteY="48dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

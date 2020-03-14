@@ -10,6 +10,10 @@ import org.jetbrains.annotations.NotNull;
 
 @Entity(tableName = "usuarios")
 public class Usuario {
+    public static final int ID_USUARIO_ADMIN = 3,
+            ID_USUARIO_VENDEDOR = 2,
+            ID_USUARIO_CLIENTE = 1;
+
     @PrimaryKey
     @ColumnInfo(name = "dni")
     @NonNull

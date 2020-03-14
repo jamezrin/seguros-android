@@ -17,9 +17,10 @@ import me.android.seguros.R;
 import me.android.seguros.datos.AppDatabase;
 import me.android.seguros.datos.AppDatabaseWrapper;
 import me.android.seguros.datos.modelos.TipoSeguro;
-import me.android.seguros.datos.modelos.TipoUsuario;
 import me.android.seguros.datos.modelos.Usuario;
-import me.android.seguros.datos.modelos.relaciones.UsuarioConTipo;
+
+import static me.android.seguros.datos.modelos.Usuario.ID_USUARIO_ADMIN;
+import static me.android.seguros.datos.modelos.Usuario.ID_USUARIO_VENDEDOR;
 
 public class ActividadAdmin extends AppCompatActivity {
     private EditText crearUsuariosCampoDni;
@@ -38,10 +39,10 @@ public class ActividadAdmin extends AppCompatActivity {
         setContentView(R.layout.activity_actividad_admin);
         db = AppDatabaseWrapper.get();
 
-        crearUsuariosCampoDni = findViewById(R.id.editText2);
-        gestionarUsuariosSpinner = findViewById(R.id.spinner3);
-        crearTipoSeguroCampoNombre = findViewById(R.id.editText);
-        gestionarTiposSeguroSpinner = findViewById(R.id.spinner);
+        crearUsuariosCampoDni = findViewById(R.id.administracion_2);
+        gestionarUsuariosSpinner = findViewById(R.id.administracion_5);
+        crearTipoSeguroCampoNombre = findViewById(R.id.administracion_11);
+        gestionarTiposSeguroSpinner = findViewById(R.id.administracion_14);
 
         gestionarUsuariosSpinnerAdapter = new ArrayAdapter<>(
                 this,
@@ -58,7 +59,7 @@ public class ActividadAdmin extends AppCompatActivity {
 
         actualizarSpinners();
 
-        findViewById(R.id.button3).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.administracion_3).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!crearUsuariosCampoDni.getText().toString().trim().equals("")) {
@@ -71,7 +72,7 @@ public class ActividadAdmin extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.button9).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.administracion_6).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String dniUsuarioSeleccionado = (String) gestionarUsuariosSpinner.getSelectedItem();
@@ -90,14 +91,14 @@ public class ActividadAdmin extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.button4).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.administracion_7).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String dniUsuarioSeleccionado = (String) gestionarUsuariosSpinner.getSelectedItem();
                 Usuario usuario = db.usuarioDao().find(dniUsuarioSeleccionado);
 
                 if (usuario != null) {
-                    usuario.setIdTipoUsuario(2);
+                    usuario.setIdTipoUsuario(ID_USUARIO_VENDEDOR);
                     db.usuarioDao().update(usuario);
 
                     Toast.makeText(v.getContext(), "Se ha puesto a " + usuario.getDni() + " como vendedor", Toast.LENGTH_SHORT).show();
@@ -107,7 +108,7 @@ public class ActividadAdmin extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.button5).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.administracion_8).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String dniUsuarioSeleccionado = (String) gestionarUsuariosSpinner.getSelectedItem();
@@ -123,38 +124,50 @@ public class ActividadAdmin extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.button10).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.administracion_9).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String dniUsuarioSeleccionado = (String) gestionarUsuariosSpinner.getSelectedItem();
 
-                Intent intent = new Intent(v.getContext(), ActividadSeguroUsuario.class);
+                Intent intent = new Intent(v.getContext(), ActividadCrearSeguroUsuario.class);
                 intent.putExtra("dni_usuario", dniUsuarioSeleccionado);
                 startActivity(intent);
             }
         });
 
-        // añadir tipo de seguro
-        findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.administracion_12).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TipoSeguro tipoSeguro = new TipoSeguro();
-                tipoSeguro.setTipo(crearTipoSeguroCampoNombre.getText().toString());
-                tipoSeguro.setBorrado(false);
+                if (!crearTipoSeguroCampoNombre.getText().toString().trim().equals("")) {
+                    TipoSeguro tipoSeguro = new TipoSeguro();
+                    tipoSeguro.setTipo(crearTipoSeguroCampoNombre.getText().toString());
+                    tipoSeguro.setBorrado(false);
 
-                try {
-                    db.tipoSeguroDao().insertAll(tipoSeguro);
+                    try {
+                        db.tipoSeguroDao().insertAll(tipoSeguro);
 
-                    // actualiza el spinner
-                    gestionarTiposSeguroSpinnerAdapter.add(tipoSeguro.getTipo());
-                } catch (SQLiteConstraintException e) {
-                    Toast.makeText(v.getContext(), "Ya existe ese tipo de seguro", Toast.LENGTH_SHORT).show();
+                        // actualiza el spinner
+                        gestionarTiposSeguroSpinnerAdapter.add(tipoSeguro.getTipo());
+
+                        Toast.makeText(
+                                v.getContext(),
+                                "Tipo de seguro creado correctamente",
+                                Toast.LENGTH_SHORT
+                        ).show();
+                    } catch (SQLiteConstraintException e) {
+                        Toast.makeText(
+                                v.getContext(),
+                                "Ya existe ese tipo de seguro",
+                                Toast.LENGTH_SHORT
+                        ).show();
+                    }
+                } else {
+                    crearTipoSeguroCampoNombre.setError("Este campo es necesario");
                 }
             }
         });
 
-        // borrar tipo de seguro
-        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.administracion_15).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String tipoSeguroSeleccionado = (String) gestionarTiposSeguroSpinner.getSelectedItem();
@@ -166,8 +179,18 @@ public class ActividadAdmin extends AppCompatActivity {
 
                     // actualiza el spinner
                     gestionarTiposSeguroSpinnerAdapter.remove(tipoSeguro.getTipo());
+
+                    Toast.makeText(
+                            v.getContext(),
+                            "Tipo de seguro eliminado correctamente",
+                            Toast.LENGTH_SHORT
+                    ).show();
                 } else {
-                    Toast.makeText(v.getContext(), "No se ha podido encontrar ese tipo de seguro", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(
+                            v.getContext(),
+                            "No se ha podido encontrar ese tipo de seguro",
+                            Toast.LENGTH_SHORT
+                    ).show();
                 }
             }
         });
@@ -189,7 +212,7 @@ public class ActividadAdmin extends AppCompatActivity {
 
         for (Usuario usuario : usuariosExistentes) {
             // no listar los administradores
-            if (usuario.getIdTipoUsuario() == 3)
+            if (usuario.getIdTipoUsuario() == ID_USUARIO_ADMIN)
                 continue;
 
             gestionarUsuariosSpinnerAdapter.add(usuario.getDni());

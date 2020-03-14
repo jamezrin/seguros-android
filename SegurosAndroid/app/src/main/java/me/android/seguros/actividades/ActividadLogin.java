@@ -24,10 +24,10 @@ public class ActividadLogin extends AppCompatActivity {
         AppDatabaseWrapper.init(this, "seguros-app");
 
         final AppDatabase db = AppDatabaseWrapper.get();
-        final TextView campoDni = findViewById(R.id.campo_dni_login);
-        final TextView campoContrasena = findViewById(R.id.campo_contrasena_login);
+        final TextView campoDni = findViewById(R.id.iniciar_sesion_2);
+        final TextView campoContrasena = findViewById(R.id.iniciar_sesion_4);
 
-        findViewById(R.id.boton_iniciar_sesion).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.iniciar_sesion_5).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 UsuarioConTodo usuario = db.usuarioDao().findConTodo(

@@ -6,8 +6,179 @@
     android:layout_height="match_parent"
     tools:context=".actividades.ActividadDatosUsuario">
 
+    <TextView
+        android:id="@+id/datos_usuario_0"
+        android:layout_width="393dp"
+        android:layout_height="45dp"
+        android:gravity="center"
+        android:text="Datos de usuario"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/datos_usuario_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/datos_usuario_1"
+        android:layout_width="123dp"
+        android:layout_height="45dp"
+        android:text="DNI"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/datos_usuario_3"
+        app:layout_constraintEnd_toStartOf="@+id/datos_usuario_2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/datos_usuario_0" />
+
+    <EditText
+        android:id="@+id/datos_usuario_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:enabled="false"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/datos_usuario_4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/datos_usuario_1"
+        app:layout_constraintTop_toBottomOf="@+id/datos_usuario_0" />
+
+    <TextView
+        android:id="@+id/datos_usuario_3"
+        android:layout_width="123dp"
+        android:layout_height="45dp"
+        android:text="Nombre"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/datos_usuario_5"
+        app:layout_constraintEnd_toStartOf="@+id/datos_usuario_4"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/datos_usuario_1" />
+
+    <EditText
+        android:id="@+id/datos_usuario_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/datos_usuario_6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/datos_usuario_3"
+        app:layout_constraintTop_toBottomOf="@+id/datos_usuario_2" />
+
+    <TextView
+        android:id="@+id/datos_usuario_5"
+        android:layout_width="123dp"
+        android:layout_height="45dp"
+        android:text="Apellidos"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/datos_usuario_7"
+        app:layout_constraintEnd_toStartOf="@+id/datos_usuario_6"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/datos_usuario_3" />
+
+    <EditText
+        android:id="@+id/datos_usuario_6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/datos_usuario_8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/datos_usuario_5"
+        app:layout_constraintTop_toBottomOf="@+id/datos_usuario_4" />
+
+    <TextView
+        android:id="@+id/datos_usuario_7"
+        android:layout_width="123dp"
+        android:layout_height="45dp"
+        android:text="Direccion"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/datos_usuario_9"
+        app:layout_constraintEnd_toStartOf="@+id/datos_usuario_8"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/datos_usuario_5" />
+
+    <EditText
+        android:id="@+id/datos_usuario_8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/datos_usuario_10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/datos_usuario_7"
+        app:layout_constraintTop_toBottomOf="@+id/datos_usuario_6" />
+
+    <TextView
+        android:id="@+id/datos_usuario_9"
+        android:layout_width="123dp"
+        android:layout_height="45dp"
+        android:text="Telefono"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/datos_usuario_11"
+        app:layout_constraintEnd_toStartOf="@+id/datos_usuario_10"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/datos_usuario_7" />
+
+    <EditText
+        android:id="@+id/datos_usuario_10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/datos_usuario_12"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/datos_usuario_9"
+        app:layout_constraintTop_toBottomOf="@+id/datos_usuario_8" />
+
+    <TextView
+        android:id="@+id/datos_usuario_11"
+        android:layout_width="123dp"
+        android:layout_height="45dp"
+        android:text="Contraseña"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/datos_usuario_13"
+        app:layout_constraintEnd_toStartOf="@+id/datos_usuario_12"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/datos_usuario_9" />
+
+    <EditText
+        android:id="@+id/datos_usuario_12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/datos_usuario_13"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/datos_usuario_11"
+        app:layout_constraintTop_toBottomOf="@+id/datos_usuario_10" />
+
     <Button
-        android:id="@+id/boton_volver_dash"
+        android:id="@+id/datos_usuario_13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/holo_green_dark"
+        android:text="Guardar cambios"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/datos_usuario_14"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/datos_usuario_11" />
+
+    <Button
+        android:id="@+id/datos_usuario_14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@android:color/holo_red_dark"
@@ -16,179 +187,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/boton_guardar_cambios_dash"
-        app:layout_constraintTop_toBottomOf="@+id/campo_contrasena_dash" />
-
-    <Button
-        android:id="@+id/boton_guardar_cambios_dash"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/holo_green_dark"
-        android:text="Guardar cambios"
-        android:textColor="#ffffff"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/boton_volver_dash"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="392dp"
-        android:layout_height="45dp"
-        android:gravity="center"
-        android:text="Datos de usuario"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/campo_dni_dash"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="138dp"
-        android:layout_height="43dp"
-        android:text="Contraseña"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/boton_guardar_cambios_dash"
-        app:layout_constraintEnd_toStartOf="@+id/campo_contrasena_dash"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="123dp"
-        android:layout_height="45dp"
-        android:text="DNI"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView5"
-        app:layout_constraintEnd_toStartOf="@+id/campo_dni_dash"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="123dp"
-        android:layout_height="45dp"
-        android:text="Apellidos"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView7"
-        app:layout_constraintEnd_toStartOf="@+id/campo_apellidos_dash"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
-    <EditText
-        android:id="@+id/campo_direccion_dash"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/campo_telefono_dash"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView7"
-        app:layout_constraintTop_toBottomOf="@+id/campo_apellidos_dash" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="123dp"
-        android:layout_height="45dp"
-        android:text="Telefono"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView10"
-        app:layout_constraintEnd_toStartOf="@+id/campo_telefono_dash"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="123dp"
-        android:layout_height="45dp"
-        android:text="Direccion"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView8"
-        app:layout_constraintEnd_toStartOf="@+id/campo_direccion_dash"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-    <EditText
-        android:id="@+id/campo_apellidos_dash"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/campo_direccion_dash"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/campo_nombre_dash" />
-
-    <EditText
-        android:id="@+id/campo_nombre_dash"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/campo_apellidos_dash"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/campo_dni_dash" />
-
-    <EditText
-        android:id="@+id/campo_dni_dash"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:enabled="false"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/campo_nombre_dash"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="123dp"
-        android:layout_height="45dp"
-        android:text="Nombre"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView6"
-        app:layout_constraintEnd_toStartOf="@+id/campo_nombre_dash"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-    <EditText
-        android:id="@+id/campo_telefono_dash"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/campo_contrasena_dash"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/campo_direccion_dash" />
-
-    <EditText
-        android:id="@+id/campo_contrasena_dash"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/boton_guardar_cambios_dash"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/campo_telefono_dash" />
+        app:layout_constraintStart_toEndOf="@+id/datos_usuario_13"
+        app:layout_constraintTop_toBottomOf="@+id/datos_usuario_12" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
