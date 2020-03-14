@@ -7,17 +7,17 @@
     tools:context=".actividades.ActividadDatosUsuario">
 
     <Button
-        android:id="@+id/boton_borrar_cuenta_dash"
+        android:id="@+id/boton_volver_dash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@android:color/holo_red_dark"
-        android:text="Borrar cuenta"
+        android:text="Volver atrás"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/boton_guardar_cambios_dash"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintTop_toBottomOf="@+id/campo_contrasena_dash" />
 
     <Button
         android:id="@+id/boton_guardar_cambios_dash"
@@ -27,7 +27,7 @@
         android:text="Guardar cambios"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/boton_borrar_cuenta_dash"
+        app:layout_constraintEnd_toStartOf="@+id/boton_volver_dash"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
@@ -39,7 +39,7 @@
         android:gravity="center"
         android:text="Datos de usuario"
         android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintBottom_toTopOf="@+id/campo_dni_dash"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +52,7 @@
         android:text="Contraseña"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/boton_guardar_cambios_dash"
-        app:layout_constraintEnd_toStartOf="@+id/editText3"
+        app:layout_constraintEnd_toStartOf="@+id/campo_contrasena_dash"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
@@ -64,7 +64,7 @@
         android:text="DNI"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/textView5"
-        app:layout_constraintEnd_toStartOf="@+id/campo_usuario_dash"
+        app:layout_constraintEnd_toStartOf="@+id/campo_dni_dash"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -82,12 +82,12 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <EditText
-        android:id="@+id/campo_dni_dash"
+        android:id="@+id/campo_direccion_dash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/campo_contrasena_dash"
+        app:layout_constraintBottom_toTopOf="@+id/campo_telefono_dash"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView7"
@@ -100,7 +100,7 @@
         android:text="Telefono"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/textView10"
-        app:layout_constraintEnd_toStartOf="@+id/campo_contrasena_dash"
+        app:layout_constraintEnd_toStartOf="@+id/campo_telefono_dash"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
@@ -112,7 +112,7 @@
         android:text="Direccion"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/textView8"
-        app:layout_constraintEnd_toStartOf="@+id/campo_dni_dash"
+        app:layout_constraintEnd_toStartOf="@+id/campo_direccion_dash"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
@@ -123,7 +123,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/campo_dni_dash"
+        app:layout_constraintBottom_toTopOf="@+id/campo_direccion_dash"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView6"
@@ -139,13 +139,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/campo_usuario_dash" />
+        app:layout_constraintTop_toBottomOf="@+id/campo_dni_dash" />
 
     <EditText
-        android:id="@+id/campo_usuario_dash"
+        android:id="@+id/campo_dni_dash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:enabled="false"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/campo_nombre_dash"
         app:layout_constraintEnd_toEndOf="parent"
@@ -166,29 +167,28 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <EditText
+        android:id="@+id/campo_telefono_dash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/campo_contrasena_dash"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/campo_direccion_dash" />
+
+    <EditText
         android:id="@+id/campo_contrasena_dash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/editText3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/campo_dni_dash" />
-
-    <EditText
-        android:id="@+id/editText3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintBottom_toTopOf="@+id/boton_borrar_cuenta_dash"
+        app:layout_constraintBottom_toTopOf="@+id/boton_guardar_cambios_dash"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/campo_contrasena_dash" />
+        app:layout_constraintTop_toBottomOf="@+id/campo_telefono_dash" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

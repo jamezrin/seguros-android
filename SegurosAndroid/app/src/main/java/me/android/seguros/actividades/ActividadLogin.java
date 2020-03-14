@@ -1,6 +1,5 @@
 package me.android.seguros.actividades;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,7 +12,6 @@ import me.android.seguros.R;
 import me.android.seguros.datos.AppDatabase;
 import me.android.seguros.datos.AppDatabaseWrapper;
 import me.android.seguros.datos.modelos.TipoUsuario;
-import me.android.seguros.datos.modelos.Usuario;
 import me.android.seguros.datos.modelos.relaciones.UsuarioConTodo;
 
 public class ActividadLogin extends AppCompatActivity {
@@ -32,7 +30,7 @@ public class ActividadLogin extends AppCompatActivity {
         findViewById(R.id.boton_iniciar_sesion).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UsuarioConTodo usuario = db.usuarioDao().findUserConTodo(
+                UsuarioConTodo usuario = db.usuarioDao().findConTodo(
                         campoDni.getText().toString(),
                         campoContrasena.getText().toString()
                 );

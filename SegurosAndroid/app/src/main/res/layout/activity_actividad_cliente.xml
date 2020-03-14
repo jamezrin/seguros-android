@@ -39,7 +39,7 @@
     <Spinner
         android:id="@+id/spinner3"
         android:layout_width="0dp"
-        android:layout_height="51dp"
+        android:layout_height="55dp"
         android:layout_marginStart="22dp"
         android:layout_marginLeft="22dp"
         android:layout_marginEnd="19dp"
@@ -51,7 +51,7 @@
     <Button
         android:id="@+id/button3"
         android:layout_width="155dp"
-        android:layout_height="54dp"
+        android:layout_height="55dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="212dp"
@@ -63,8 +63,8 @@
 
     <Button
         android:id="@+id/button73"
-        android:layout_width="161dp"
-        android:layout_height="96dp"
+        android:layout_width="140dp"
+        android:layout_height="80dp"
         android:layout_marginStart="39dp"
         android:layout_marginLeft="39dp"
         android:layout_marginEnd="32dp"
@@ -78,8 +78,8 @@
 
     <Button
         android:id="@+id/button38"
-        android:layout_width="0dp"
-        android:layout_height="105dp"
+        android:layout_width="140dp"
+        android:layout_height="80dp"
         android:layout_marginEnd="28dp"
         android:layout_marginRight="28dp"
         android:text="Cerrar sesión"

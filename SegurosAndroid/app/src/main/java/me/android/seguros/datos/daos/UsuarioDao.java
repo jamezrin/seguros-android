@@ -4,6 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
 
@@ -20,7 +21,13 @@ public interface UsuarioDao {
     List<Usuario> loadAllByDNIs(String[] dnis);
 
     @Query("SELECT * FROM usuarios WHERE dni = :dni AND contrasena = :contrasena LIMIT 1")
-    UsuarioConTodo findUserConTodo(String dni, String contrasena);
+    UsuarioConTodo findConTodo(String dni, String contrasena);
+
+    @Query("SELECT * FROM usuarios WHERE dni = :dni LIMIT 1")
+    UsuarioConTodo findConTodo(String dni);
+
+    @Query("SELECT * FROM usuarios WHERE dni = :dni LIMIT 1")
+    Usuario find(String dni);
 
     @Query("SELECT * FROM usuarios WHERE borrado = :borrado")
     List<Usuario> getBorrados(boolean borrado);
@@ -33,4 +40,7 @@ public interface UsuarioDao {
 
     @Delete
     void delete(Usuario user);
+
+    @Update
+    void update(Usuario user);
 }

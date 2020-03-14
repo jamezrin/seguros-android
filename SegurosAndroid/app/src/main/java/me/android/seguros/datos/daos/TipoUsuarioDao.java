@@ -17,6 +17,9 @@ public interface TipoUsuarioDao {
     @Query("SELECT COUNT(*) FROM tipos_usuario")
     int count();
 
+    @Query("SELECT * FROM tipos_usuario WHERE tipo = :tipo LIMIT 1")
+    TipoUsuario find(String tipo);
+
     @Insert
     void insertAll(TipoUsuario... users);
 
