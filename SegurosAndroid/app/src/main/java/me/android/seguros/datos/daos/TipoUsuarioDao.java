@@ -27,4 +27,7 @@ public interface TipoUsuarioDao {
 
     @Update
     void update(TipoUsuario tipoUsuario);
+
+    @Query("SELECT * FROM tipos_usuario WHERE id = :id")
+    TipoUsuario findById(int id);
 }

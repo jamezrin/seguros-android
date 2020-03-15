@@ -13,7 +13,7 @@
         android:gravity="center"
         android:text="Datos de usuario"
         android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/datos_usuario_2"
+        app:layout_constraintBottom_toTopOf="@+id/datos_usuario_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -153,32 +153,57 @@
         app:layout_constraintTop_toBottomOf="@+id/datos_usuario_9" />
 
     <EditText
+        android:id="@+id/datos_usuario_14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:enabled="false"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/datos_usuario_15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/datos_usuario_13"
+        app:layout_constraintTop_toBottomOf="@+id/datos_usuario_12" />
+
+    <TextView
+        android:id="@+id/datos_usuario_13"
+        android:layout_width="123dp"
+        android:layout_height="45dp"
+        android:text="Tipo de Usuario"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/datos_usuario_15"
+        app:layout_constraintEnd_toStartOf="@+id/datos_usuario_14"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/datos_usuario_11" />
+
+    <EditText
         android:id="@+id/datos_usuario_12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/datos_usuario_13"
+        app:layout_constraintBottom_toTopOf="@+id/datos_usuario_14"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/datos_usuario_11"
         app:layout_constraintTop_toBottomOf="@+id/datos_usuario_10" />
 
     <Button
-        android:id="@+id/datos_usuario_13"
+        android:id="@+id/datos_usuario_15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@android:color/holo_green_dark"
         android:text="Guardar cambios"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/datos_usuario_14"
+        app:layout_constraintEnd_toStartOf="@+id/datos_usuario_16"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/datos_usuario_11" />
+        app:layout_constraintTop_toBottomOf="@+id/datos_usuario_14" />
 
     <Button
-        android:id="@+id/datos_usuario_14"
+        android:id="@+id/datos_usuario_16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@android:color/holo_red_dark"
@@ -187,8 +212,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/datos_usuario_13"
-        app:layout_constraintTop_toBottomOf="@+id/datos_usuario_12" />
+        app:layout_constraintStart_toEndOf="@+id/datos_usuario_15"
+        app:layout_constraintTop_toBottomOf="@+id/datos_usuario_14" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

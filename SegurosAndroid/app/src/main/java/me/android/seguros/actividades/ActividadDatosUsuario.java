@@ -4,14 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import me.android.seguros.R;
 import me.android.seguros.datos.AppDatabase;
 import me.android.seguros.datos.AppDatabaseWrapper;
+import me.android.seguros.datos.modelos.TipoUsuario;
 import me.android.seguros.datos.modelos.Usuario;
+
+import static me.android.seguros.datos.modelos.Usuario.ID_USUARIO_CLIENTE;
 
 public class ActividadDatosUsuario extends AppCompatActivity {
     private Usuario usuarioActual = null;
@@ -29,6 +31,7 @@ public class ActividadDatosUsuario extends AppCompatActivity {
         final EditText campoDireccion = findViewById(R.id.datos_usuario_8);
         final EditText campoTelefono = findViewById(R.id.datos_usuario_10);
         final EditText campoContrasena = findViewById(R.id.datos_usuario_12);
+        final EditText campoTipoUsuario = findViewById(R.id.datos_usuario_14);
 
         final String dniUsuario = getIntent().getStringExtra("dni_usuario");
         campoDni.setText(dniUsuario);
@@ -41,9 +44,15 @@ public class ActividadDatosUsuario extends AppCompatActivity {
             campoDireccion.setText(usuarioActual.getDireccion());
             campoTelefono.setText(usuarioActual.getTelefono());
             campoContrasena.setText(usuarioActual.getContrasena());
+
+            TipoUsuario tipoUsuario = db.tipoUsuarioDao().findById(usuarioActual.getIdTipoUsuario());
+            campoTipoUsuario.setText(tipoUsuario.getTipo());
+        } else {
+            TipoUsuario tipoUsuario = db.tipoUsuarioDao().findById(ID_USUARIO_CLIENTE);
+            campoTipoUsuario.setText(tipoUsuario.getTipo());
         }
 
-        findViewById(R.id.datos_usuario_13).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.datos_usuario_15).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 boolean usuarioExistente = (usuarioActual != null);
@@ -51,6 +60,7 @@ public class ActividadDatosUsuario extends AppCompatActivity {
                 if (!usuarioExistente) {
                     assert dniUsuario != null;
                     usuarioActual = new Usuario(dniUsuario);
+                    usuarioActual.setIdTipoUsuario(ID_USUARIO_CLIENTE);
                 }
 
                 usuarioActual.setNombre(campoNombre.getText().toString());
@@ -68,7 +78,6 @@ public class ActividadDatosUsuario extends AppCompatActivity {
                             Toast.LENGTH_SHORT
                     ).show();
                 } else {
-                    usuarioActual.setIdTipoUsuario(1);
                     db.usuarioDao().insertAll(usuarioActual);
                     Toast.makeText(
                             v.getContext(),
@@ -82,7 +91,7 @@ public class ActividadDatosUsuario extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.datos_usuario_14).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.datos_usuario_16).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // sale de la actividad

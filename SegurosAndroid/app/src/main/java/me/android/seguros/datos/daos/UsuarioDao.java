@@ -10,6 +10,7 @@ import java.util.List;
 
 import me.android.seguros.datos.modelos.TipoSeguro;
 import me.android.seguros.datos.modelos.Usuario;
+import me.android.seguros.datos.modelos.relaciones.UsuarioConTipo;
 import me.android.seguros.datos.modelos.relaciones.UsuarioConTodo;
 
 @Dao
@@ -43,4 +44,7 @@ public interface UsuarioDao {
 
     @Update
     void update(Usuario usuario);
+
+    @Query("SELECT * FROM usuarios WHERE dni = :dni LIMIT 1")
+    UsuarioConTipo findConTipo(String dni);
 }
