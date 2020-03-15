@@ -17,4 +17,8 @@
     <string name="nombre_tipo_seguro">Nombre de tipo de seguro</string>
     <string name="nombre_de_usuario">Nombre de usuario</string>
     <string name="crear_seguro">Crear seguro</string>
+    <string name="titulo_cliente">Cliente</string>
+    <string name="subtitulo_seguros_contratados">Seguros contratados</string>
+    <string name="accion_ver_seguro">Ver seguro</string>
+    <string name="accion_ver_tus_datos">Ver tus datos</string>
 </resources>
