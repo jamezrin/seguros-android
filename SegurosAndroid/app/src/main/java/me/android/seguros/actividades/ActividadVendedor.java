@@ -21,7 +21,10 @@ import static me.android.seguros.datos.modelos.Usuario.ID_USUARIO_ADMIN;
 import static me.android.seguros.datos.modelos.Usuario.ID_USUARIO_CLIENTE;
 
 public class ActividadVendedor extends AppCompatActivity {
-    private AppDatabase db;
+    private AppDatabase db = null;
+    private String dniUsuario = null;
+    private EditText crearUsuariosCampoDni = null;
+    private Spinner spinnerUsuarios = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +32,9 @@ public class ActividadVendedor extends AppCompatActivity {
         setContentView(R.layout.activity_actividad_vendedor);
         db = AppDatabaseWrapper.get();
 
-        final String dniUsuario = getIntent().getStringExtra("dni_usuario");
-
-        final EditText crearUsuariosCampoDni = findViewById(R.id.vendedor_2);
-        final Spinner spinnerUsuarios = findViewById(R.id.vendedor_5);
+        dniUsuario = getIntent().getStringExtra("dni_usuario");
+        crearUsuariosCampoDni = findViewById(R.id.vendedor_2);
+        spinnerUsuarios = findViewById(R.id.vendedor_5);
 
         final ArrayAdapter<String> spinnerUsuariosAdapter = new ArrayAdapter<>(
                 this,
@@ -51,48 +53,56 @@ public class ActividadVendedor extends AppCompatActivity {
             spinnerUsuariosAdapter.add(usuario.getDni());
         }
 
-        findViewById(R.id.vendedor_3).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!crearUsuariosCampoDni.getText().toString().trim().equals("")) {
-                    Intent intent = new Intent(v.getContext(), ActividadDatosUsuario.class);
-                    intent.putExtra("dni_usuario", crearUsuariosCampoDni.getText().toString());
-                    startActivity(intent);
-                } else {
-                    crearUsuariosCampoDni.setError("Este campo es necesario");
-                }
-            }
-        });
+        findViewById(R.id.vendedor_3).setOnClickListener(new BotonCrearUsuarioListener());
 
-        findViewById(R.id.vendedor_6).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String dniUsuarioSeleccionado = (String) spinnerUsuarios.getSelectedItem();
+        findViewById(R.id.vendedor_6).setOnClickListener(new BotonCrearSeguroListener());
 
-                Intent intent = new Intent(v.getContext(), ActividadCrearSeguroUsuario.class);
-                intent.putExtra("dni_usuario", dniUsuarioSeleccionado);
-                startActivity(intent);
-            }
-        });
+        findViewById(R.id.vendedor_7).setOnClickListener(new BotonVerUsuarioListener());
 
-        findViewById(R.id.vendedor_7).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String dniUsuarioSeleccionado = (String) spinnerUsuarios.getSelectedItem();
+        findViewById(R.id.vendedor_8).setOnClickListener(new BotonVerDatosListener());
+    }
 
+    private class BotonVerDatosListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(v.getContext(), ActividadDatosUsuario.class);
+            intent.putExtra("dni_usuario", dniUsuario);
+            startActivity(intent);
+        }
+    }
+
+    private class BotonVerUsuarioListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            String dniUsuarioSeleccionado = (String) spinnerUsuarios.getSelectedItem();
+
+            Intent intent = new Intent(v.getContext(), ActividadDatosUsuario.class);
+            intent.putExtra("dni_usuario", dniUsuarioSeleccionado);
+            startActivity(intent);
+        }
+    }
+
+    private class BotonCrearSeguroListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            String dniUsuarioSeleccionado = (String) spinnerUsuarios.getSelectedItem();
+
+            Intent intent = new Intent(v.getContext(), ActividadCrearSeguroUsuario.class);
+            intent.putExtra("dni_usuario", dniUsuarioSeleccionado);
+            startActivity(intent);
+        }
+    }
+
+    private class BotonCrearUsuarioListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            if (!crearUsuariosCampoDni.getText().toString().trim().equals("")) {
                 Intent intent = new Intent(v.getContext(), ActividadDatosUsuario.class);
-                intent.putExtra("dni_usuario", dniUsuarioSeleccionado);
+                intent.putExtra("dni_usuario", crearUsuariosCampoDni.getText().toString());
                 startActivity(intent);
+            } else {
+                crearUsuariosCampoDni.setError("Este campo es necesario");
             }
-        });
-
-        findViewById(R.id.vendedor_8).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), ActividadDatosUsuario.class);
-                intent.putExtra("dni_usuario", dniUsuario);
-                startActivity(intent);
-            }
-        });
+        }
     }
 }

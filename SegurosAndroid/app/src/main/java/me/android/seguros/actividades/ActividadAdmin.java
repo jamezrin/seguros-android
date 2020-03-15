@@ -88,6 +88,8 @@ public class ActividadAdmin extends AppCompatActivity {
 
         actualizarSpinners();
 
+        
+
         findViewById(R.id.administracion_3).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
