@@ -19,6 +19,10 @@ import static me.android.seguros.datos.modelos.Usuario.ID_USUARIO_CLIENTE;
 import static me.android.seguros.datos.modelos.Usuario.ID_USUARIO_VENDEDOR;
 
 public class ActividadLogin extends AppCompatActivity {
+    private AppDatabase db = null;
+    private TextView campoDni = null;
+    private TextView campoContrasena = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,36 +30,11 @@ public class ActividadLogin extends AppCompatActivity {
 
         AppDatabaseWrapper.init(this, "seguros-app");
 
-        final AppDatabase db = AppDatabaseWrapper.get();
-        final TextView campoDni = findViewById(R.id.iniciar_sesion_2);
-        final TextView campoContrasena = findViewById(R.id.iniciar_sesion_4);
+        db = AppDatabaseWrapper.get();
+        campoDni = findViewById(R.id.iniciar_sesion_2);
+        campoContrasena = findViewById(R.id.iniciar_sesion_4);
 
-        findViewById(R.id.iniciar_sesion_5).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                UsuarioConTodo usuario = db.usuarioDao().findConTodo(
-                        campoDni.getText().toString(),
-                        campoContrasena.getText().toString()
-                );
-
-                if (usuario != null) {
-                    Toast.makeText(v.getContext(), "Has iniciado sesión como " + usuario.getUsuario().getNombre() + " " + usuario.getUsuario().getApellidos(), Toast.LENGTH_SHORT).show();
-                    Toast.makeText(v.getContext(), "Tipo de usuario: " + usuario.getTipoUsuario().getTipo(), Toast.LENGTH_SHORT).show();
-
-                    Class<? extends AppCompatActivity> claseActividad = mapearTipoUsuarioActividad(
-                            usuario.getTipoUsuario());
-                    if (claseActividad != null) {
-                        Intent intent = new Intent(v.getContext(), claseActividad);
-                        intent.putExtra("dni_usuario", usuario.getUsuario().getDni());
-                        startActivity(intent);
-                    } else {
-                        Toast.makeText(v.getContext(), "No entendemos tu tipo de usuario", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    Toast.makeText(v.getContext(), "No se ha podido iniciar sesión", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+        findViewById(R.id.iniciar_sesion_5).setOnClickListener(new BotonLoginListener());
     }
 
     private Class<? extends AppCompatActivity> mapearTipoUsuarioActividad(TipoUsuario tipoUsuario) {
@@ -68,6 +47,33 @@ public class ActividadLogin extends AppCompatActivity {
                 return ActividadAdmin.class;
             default:
                 return null;
+        }
+    }
+
+    private class BotonLoginListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            UsuarioConTodo usuario = db.usuarioDao().findConTodo(
+                    campoDni.getText().toString(),
+                    campoContrasena.getText().toString()
+            );
+
+            if (usuario != null) {
+                Toast.makeText(v.getContext(), "Has iniciado sesión como " + usuario.getUsuario().getNombre() + " " + usuario.getUsuario().getApellidos(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(v.getContext(), "Tipo de usuario: " + usuario.getTipoUsuario().getTipo(), Toast.LENGTH_SHORT).show();
+
+                Class<? extends AppCompatActivity> claseActividad = mapearTipoUsuarioActividad(
+                        usuario.getTipoUsuario());
+                if (claseActividad != null) {
+                    Intent intent = new Intent(v.getContext(), claseActividad);
+                    intent.putExtra("dni_usuario", usuario.getUsuario().getDni());
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(v.getContext(), "No entendemos tu tipo de usuario", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(v.getContext(), "No se ha podido iniciar sesión", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }
