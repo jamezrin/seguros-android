@@ -27,17 +27,23 @@ public class ActividadCrearSeguroUsuario extends AppCompatActivity {
     private Usuario usuarioActual = null;
     private AppDatabase db = null;
 
+    private EditText campoCliente = null;
+    private Spinner spinnerVendedor = null;
+    private Spinner spinnerTipoSeguro = null;
+    private String dniUsuario = null;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actividad_crear_seguro_usuario);
         db = AppDatabaseWrapper.get();
 
-        final EditText campoCliente = findViewById(R.id.crear_seguro_2);
-        final Spinner spinnerVendedor = findViewById(R.id.crear_seguro_4);
-        final Spinner spinnerTipoSeguro = findViewById(R.id.crear_seguro_6);
+        campoCliente = findViewById(R.id.crear_seguro_2);
+        spinnerVendedor = findViewById(R.id.crear_seguro_4);
+        spinnerTipoSeguro = findViewById(R.id.crear_seguro_6);
 
-        final String dniUsuario = getIntent().getStringExtra("dni_usuario");
+        dniUsuario = getIntent().getStringExtra("dni_usuario");
         campoCliente.setText(dniUsuario);
 
         usuarioActual = db.usuarioDao().find(dniUsuario);
@@ -69,57 +75,62 @@ public class ActividadCrearSeguroUsuario extends AppCompatActivity {
             spinnerTipoSeguroAdapter.add(tipoSeguro.getTipo());
         }
 
-        findViewById(R.id.crear_seguro_7).setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.O)
-            @Override
-            public void onClick(View v) {
-                String dniVendedorSeleccionado = (String) spinnerVendedor.getSelectedItem();
-                if (dniVendedorSeleccionado == null) {
-                    Toast.makeText(
-                            v.getContext(),
-                            "Es necesario especificar un vendedor",
-                            Toast.LENGTH_SHORT
-                    ).show();
-                    return;
-                }
+        findViewById(R.id.crear_seguro_7).setOnClickListener(new BotonGuardarCambiosListener());
 
-                String tipoSeguroSeleccionado = (String) spinnerTipoSeguro.getSelectedItem();
-                if (tipoSeguroSeleccionado == null) {
-                    Toast.makeText(
-                            v.getContext(),
-                            "Es necesario especificar un tipo de seguro",
-                            Toast.LENGTH_SHORT
-                    ).show();
-                    return;
-                }
+        findViewById(R.id.crear_seguro_8).setOnClickListener(new BotonVolverAtrasListener());
+    }
 
-                Usuario vendedor = db.usuarioDao().find(dniVendedorSeleccionado);
-                TipoSeguro tipoSeguro = db.tipoSeguroDao().findByName(tipoSeguroSeleccionado);
 
-                Seguro seguro = new Seguro();
-                seguro.setDniCliente(usuarioActual.getDni());
-                seguro.setDniVendedor(vendedor.getDni());
-                seguro.setFechaAlta(LocalDateTime.now());
-                seguro.setIdTipoSeguro(tipoSeguro.getId());
-                seguro.setBorrado(false);
-
-                db.seguroDao().insertAll(seguro);
-
+    private class BotonGuardarCambiosListener implements View.OnClickListener {
+        @RequiresApi(api = Build.VERSION_CODES.O)
+        @Override
+        public void onClick(View v) {
+            String dniVendedorSeleccionado = (String) spinnerVendedor.getSelectedItem();
+            if (dniVendedorSeleccionado == null) {
                 Toast.makeText(
                         v.getContext(),
-                        "Un nuevo seguro ha sido dado de alta correctamente",
+                        "Es necesario especificar un vendedor",
                         Toast.LENGTH_SHORT
                 ).show();
-
-                ActividadCrearSeguroUsuario.this.finish();
+                return;
             }
-        });
 
-        findViewById(R.id.crear_seguro_8).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ActividadCrearSeguroUsuario.this.finish();
+            String tipoSeguroSeleccionado = (String) spinnerTipoSeguro.getSelectedItem();
+            if (tipoSeguroSeleccionado == null) {
+                Toast.makeText(
+                        v.getContext(),
+                        "Es necesario especificar un tipo de seguro",
+                        Toast.LENGTH_SHORT
+                ).show();
+                return;
             }
-        });
+
+            Usuario vendedor = db.usuarioDao().find(dniVendedorSeleccionado);
+            TipoSeguro tipoSeguro = db.tipoSeguroDao().findByName(tipoSeguroSeleccionado);
+
+            Seguro seguro = new Seguro();
+            seguro.setDniCliente(usuarioActual.getDni());
+            seguro.setDniVendedor(vendedor.getDni());
+            seguro.setFechaAlta(LocalDateTime.now());
+            seguro.setIdTipoSeguro(tipoSeguro.getId());
+            seguro.setBorrado(false);
+
+            db.seguroDao().insertAll(seguro);
+
+            Toast.makeText(
+                    v.getContext(),
+                    "Un nuevo seguro ha sido dado de alta correctamente",
+                    Toast.LENGTH_SHORT
+            ).show();
+
+            ActividadCrearSeguroUsuario.this.finish();
+        }
+    }
+
+    private class BotonVolverAtrasListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            ActividadCrearSeguroUsuario.this.finish();
+        }
     }
 }
