@@ -25,15 +25,19 @@ import static me.android.seguros.datos.modelos.Usuario.ID_USUARIO_ADMIN;
 import static me.android.seguros.datos.modelos.Usuario.ID_USUARIO_VENDEDOR;
 
 public class ActividadAdmin extends AppCompatActivity {
-    private EditText crearUsuariosCampoDni;
-    private Spinner gestionarUsuariosSpinner;
-    private EditText crearTipoSeguroCampoNombre;
-    private Spinner gestionarTiposSeguroSpinner;
+    private EditText crearUsuariosCampoDni = null;
+    private Spinner gestionarUsuariosSpinner = null;
+    private EditText crearTipoSeguroCampoNombre = null;
+    private Spinner gestionarTiposSeguroSpinner = null;
+    private Button botonBorrarUsuario = null;
+    private Button botonHacerVendedor = null;
+    private Button botonVerUsuario = null;
+    private Button botonCrearSeguro = null;
 
-    private ArrayAdapter<String> gestionarUsuariosSpinnerAdapter;
-    private ArrayAdapter<String> gestionarTiposSeguroSpinnerAdapter;
+    private ArrayAdapter<String> gestionarUsuariosSpinnerAdapter = null;
+    private ArrayAdapter<String> gestionarTiposSeguroSpinnerAdapter = null;
 
-    private AppDatabase db;
+    private AppDatabase db = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,10 +63,10 @@ public class ActividadAdmin extends AppCompatActivity {
         gestionarUsuariosSpinner.setAdapter(gestionarUsuariosSpinnerAdapter);
         gestionarTiposSeguroSpinner.setAdapter(gestionarTiposSeguroSpinnerAdapter);
 
-        final Button botonBorrarUsuario = findViewById(R.id.administracion_6);
-        final Button botonHacerVendedor = findViewById(R.id.administracion_7);
-        final Button botonVerUsuario = findViewById(R.id.administracion_8);
-        final Button botonCrearSeguro = findViewById(R.id.administracion_9);
+        botonBorrarUsuario = findViewById(R.id.administracion_6);
+        botonHacerVendedor = findViewById(R.id.administracion_7);
+        botonVerUsuario = findViewById(R.id.administracion_8);
+        botonCrearSeguro = findViewById(R.id.administracion_9);
 
         gestionarUsuariosSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -70,19 +74,7 @@ public class ActividadAdmin extends AppCompatActivity {
                 String dniUsuarioSeleccionado = (String) parent.getSelectedItem();
                 Usuario usuario = db.usuarioDao().find(dniUsuarioSeleccionado);
 
-                if (usuario == null)
-                    return;
-
-                if (usuario.getIdTipoUsuario() == ID_USUARIO_VENDEDOR) {
-                    botonCrearSeguro.setEnabled(false);
-                    botonHacerVendedor.setEnabled(false);
-                } else {
-                    botonCrearSeguro.setEnabled(true);
-                    botonHacerVendedor.setEnabled(true);
-                }
-
-                botonBorrarUsuario.setEnabled(true);
-                botonVerUsuario.setEnabled(true);
+                actualizarBotonesUsuario(usuario);
             }
 
             @Override
@@ -100,9 +92,20 @@ public class ActividadAdmin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!crearUsuariosCampoDni.getText().toString().trim().equals("")) {
-                    Intent intent = new Intent(v.getContext(), ActividadDatosUsuario.class);
-                    intent.putExtra("dni_usuario", crearUsuariosCampoDni.getText().toString());
-                    startActivity(intent);
+                    Usuario usuario = db.usuarioDao().find(crearUsuariosCampoDni.getText().toString());
+
+                    if (usuario == null) {
+                        Intent intent = new Intent(v.getContext(), ActividadDatosUsuario.class);
+                        intent.putExtra("dni_usuario", crearUsuariosCampoDni.getText().toString());
+                        intent.putExtra("accion_crear", true);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(
+                                v.getContext(),
+                                "Ya existe un usuario con ese DNI",
+                                Toast.LENGTH_SHORT
+                        ).show();
+                    }
                 } else {
                     crearUsuariosCampoDni.setError("Este campo es necesario");
                 }
@@ -122,6 +125,10 @@ public class ActividadAdmin extends AppCompatActivity {
 
                     // actualizar el spinner
                     gestionarUsuariosSpinnerAdapter.remove(dniUsuarioSeleccionado);
+
+                    // tiene que ser dependiendo del siguiente usuario seleccionado
+                    // en vez de el que acabamos de eliminar
+                    actualizarBotonesUsuario();
 
                     Toast.makeText(
                             v.getContext(),
@@ -149,8 +156,8 @@ public class ActividadAdmin extends AppCompatActivity {
 
                     db.usuarioDao().update(usuario);
 
-                    botonCrearSeguro.setEnabled(false);
-                    botonHacerVendedor.setEnabled(false);
+                    // actualizar el spinner
+                    actualizarBotonesUsuario(usuario);
 
                     Toast.makeText(
                             v.getContext(),
@@ -176,6 +183,7 @@ public class ActividadAdmin extends AppCompatActivity {
                 if (usuario != null) {
                     Intent intent = new Intent(v.getContext(), ActividadDatosUsuario.class);
                     intent.putExtra("dni_usuario", dniUsuarioSeleccionado);
+                    intent.putExtra("accion_crear", false);
                     startActivity(intent);
                 } else {
                     Toast.makeText(
@@ -274,15 +282,47 @@ public class ActividadAdmin extends AppCompatActivity {
         List<TipoSeguro> tiposSeguroExistentes = db.tipoSeguroDao().getBorrados(false);
 
         for (Usuario usuario : usuariosExistentes) {
-            // no listar los administradores
-            if (usuario.getIdTipoUsuario() == ID_USUARIO_ADMIN)
-                continue;
-
             gestionarUsuariosSpinnerAdapter.add(usuario.getDni());
         }
 
+        actualizarBotonesUsuario();
+
         for (TipoSeguro tipoSeguro : tiposSeguroExistentes) {
             gestionarTiposSeguroSpinnerAdapter.add(tipoSeguro.getTipo());
+        }
+    }
+
+    private void actualizarBotonesUsuario() {
+        String dniUsuarioSeleccionado = (String) gestionarUsuariosSpinner.getSelectedItem();
+        Usuario usuario = db.usuarioDao().find(dniUsuarioSeleccionado);
+
+        actualizarBotonesUsuario(usuario);
+    }
+
+    private void actualizarBotonesUsuario(Usuario usuario) {
+        if (usuario != null) {
+            if (usuario.getIdTipoUsuario() == ID_USUARIO_VENDEDOR
+                    || usuario.getIdTipoUsuario() == ID_USUARIO_ADMIN) {
+                botonCrearSeguro.setEnabled(false);
+                botonHacerVendedor.setEnabled(false);
+
+                if (usuario.getIdTipoUsuario() == ID_USUARIO_ADMIN) {
+                    botonBorrarUsuario.setEnabled(false);
+                } else {
+                    botonBorrarUsuario.setEnabled(true);
+                }
+            } else {
+                botonCrearSeguro.setEnabled(true);
+                botonHacerVendedor.setEnabled(true);
+                botonBorrarUsuario.setEnabled(true);
+            }
+
+            botonVerUsuario.setEnabled(true);
+        } else {
+            botonCrearSeguro.setEnabled(false);
+            botonHacerVendedor.setEnabled(false);
+            botonVerUsuario.setEnabled(false);
+            botonBorrarUsuario.setEnabled(false);
         }
     }
 }

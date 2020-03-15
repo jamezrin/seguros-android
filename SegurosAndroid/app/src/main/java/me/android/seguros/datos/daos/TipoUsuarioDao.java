@@ -1,14 +1,12 @@
 package me.android.seguros.datos.daos;
 
 import androidx.room.Dao;
-import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
 import java.util.List;
 
-import me.android.seguros.datos.modelos.TipoSeguro;
 import me.android.seguros.datos.modelos.TipoUsuario;
 
 @Dao
@@ -27,4 +25,7 @@ public interface TipoUsuarioDao {
 
     @Update
     void update(TipoUsuario tipoUsuario);
+
+    @Query("SELECT * FROM tipos_usuario WHERE id = :id")
+    TipoUsuario findById(int id);
 }

@@ -14,17 +14,16 @@ import java.util.List;
 import me.android.seguros.R;
 import me.android.seguros.datos.AppDatabase;
 import me.android.seguros.datos.AppDatabaseWrapper;
-import me.android.seguros.datos.modelos.TipoSeguro;
 import me.android.seguros.datos.modelos.Usuario;
 import me.android.seguros.datos.modelos.relaciones.SeguroConTipo;
 
-import static me.android.seguros.datos.modelos.Usuario.ID_USUARIO_ADMIN;
-
 public class ActividadCliente extends AppCompatActivity {
     private AppDatabase db = null;
-
     private Usuario usuarioActual = null;
+
     private ArrayAdapter<SeguroConTipo> segurosSpinnerAdapter = null;
+    private String dniUsuario = null;
+    private Spinner segurosSpinner = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +31,12 @@ public class ActividadCliente extends AppCompatActivity {
         setContentView(R.layout.activity_actividad_cliente);
         db = AppDatabaseWrapper.get();
 
-        final String dniUsuario = getIntent().getStringExtra("dni_usuario");
+        dniUsuario = getIntent().getStringExtra("dni_usuario");
+
         usuarioActual = db.usuarioDao().find(dniUsuario);
 
-        final Spinner segurosSpinner = findViewById(R.id.cliente_2);
+        segurosSpinner = findViewById(R.id.cliente_2);
+
         segurosSpinnerAdapter = new ArrayAdapter<>(
                 this,
                 R.layout.support_simple_spinner_dropdown_item
@@ -45,34 +46,9 @@ public class ActividadCliente extends AppCompatActivity {
 
         actualizarSpinners();
 
-        findViewById(R.id.cliente_3).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SeguroConTipo seguroSeleccionado = (SeguroConTipo) segurosSpinner.getSelectedItem();
+        findViewById(R.id.cliente_3).setOnClickListener(new BotonVerSeguroListener());
 
-                if (seguroSeleccionado != null) {
-                    Intent intent = new Intent(v.getContext(), ActividadSeguroUsuario.class);
-                    intent.putExtra("dni_usuario", dniUsuario);
-                    intent.putExtra("id_seguro", seguroSeleccionado.getSeguro().getId());
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(
-                            v.getContext(),
-                            "No se ha podido encontrar a ese seguro",
-                            Toast.LENGTH_SHORT
-                    ).show();
-                }
-            }
-        });
-
-        findViewById(R.id.cliente_4).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), ActividadDatosUsuario.class);
-                intent.putExtra("dni_usuario", dniUsuario);
-                startActivity(intent);
-            }
-        });
+        findViewById(R.id.cliente_4).setOnClickListener(new BotonVerDatosListener());
     }
 
     @Override
@@ -91,6 +67,35 @@ public class ActividadCliente extends AppCompatActivity {
                 continue;
 
             segurosSpinnerAdapter.add(seguro);
+        }
+    }
+
+    private class BotonVerSeguroListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            SeguroConTipo seguroSeleccionado = (SeguroConTipo) segurosSpinner.getSelectedItem();
+
+            if (seguroSeleccionado != null) {
+                Intent intent = new Intent(v.getContext(), ActividadSeguroUsuario.class);
+                intent.putExtra("dni_usuario", dniUsuario);
+                intent.putExtra("id_seguro", seguroSeleccionado.getSeguro().getId());
+                startActivity(intent);
+            } else {
+                Toast.makeText(
+                        v.getContext(),
+                        "No se ha podido encontrar a ese seguro",
+                        Toast.LENGTH_SHORT
+                ).show();
+            }
+        }
+    }
+
+    private class BotonVerDatosListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(v.getContext(), ActividadDatosUsuario.class);
+            intent.putExtra("dni_usuario", dniUsuario);
+            startActivity(intent);
         }
     }
 }
