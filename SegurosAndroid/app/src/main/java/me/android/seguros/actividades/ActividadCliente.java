@@ -14,11 +14,8 @@ import java.util.List;
 import me.android.seguros.R;
 import me.android.seguros.datos.AppDatabase;
 import me.android.seguros.datos.AppDatabaseWrapper;
-import me.android.seguros.datos.modelos.TipoSeguro;
 import me.android.seguros.datos.modelos.Usuario;
 import me.android.seguros.datos.modelos.relaciones.SeguroConTipo;
-
-import static me.android.seguros.datos.modelos.Usuario.ID_USUARIO_ADMIN;
 
 public class ActividadCliente extends AppCompatActivity {
     private AppDatabase db = null;

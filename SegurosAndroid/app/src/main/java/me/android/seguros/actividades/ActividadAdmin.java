@@ -25,19 +25,19 @@ import static me.android.seguros.datos.modelos.Usuario.ID_USUARIO_ADMIN;
 import static me.android.seguros.datos.modelos.Usuario.ID_USUARIO_VENDEDOR;
 
 public class ActividadAdmin extends AppCompatActivity {
-    private EditText crearUsuariosCampoDni;
-    private Spinner gestionarUsuariosSpinner;
-    private EditText crearTipoSeguroCampoNombre;
-    private Spinner gestionarTiposSeguroSpinner;
-    private Button botonBorrarUsuario;
-    private Button botonHacerVendedor;
-    private Button botonVerUsuario;
-    private Button botonCrearSeguro;
+    private EditText crearUsuariosCampoDni = null;
+    private Spinner gestionarUsuariosSpinner = null;
+    private EditText crearTipoSeguroCampoNombre = null;
+    private Spinner gestionarTiposSeguroSpinner = null;
+    private Button botonBorrarUsuario = null;
+    private Button botonHacerVendedor = null;
+    private Button botonVerUsuario = null;
+    private Button botonCrearSeguro = null;
 
-    private ArrayAdapter<String> gestionarUsuariosSpinnerAdapter;
-    private ArrayAdapter<String> gestionarTiposSeguroSpinnerAdapter;
+    private ArrayAdapter<String> gestionarUsuariosSpinnerAdapter = null;
+    private ArrayAdapter<String> gestionarTiposSeguroSpinnerAdapter = null;
 
-    private AppDatabase db;
+    private AppDatabase db = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,8 +87,6 @@ public class ActividadAdmin extends AppCompatActivity {
         });
 
         actualizarSpinners();
-
-        
 
         findViewById(R.id.administracion_3).setOnClickListener(new View.OnClickListener() {
             @Override
