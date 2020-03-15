@@ -29,6 +29,10 @@ public class ActividadAdmin extends AppCompatActivity {
     private Spinner gestionarUsuariosSpinner;
     private EditText crearTipoSeguroCampoNombre;
     private Spinner gestionarTiposSeguroSpinner;
+    private Button botonBorrarUsuario;
+    private Button botonHacerVendedor;
+    private Button botonVerUsuario;
+    private Button botonCrearSeguro;
 
     private ArrayAdapter<String> gestionarUsuariosSpinnerAdapter;
     private ArrayAdapter<String> gestionarTiposSeguroSpinnerAdapter;
@@ -59,10 +63,10 @@ public class ActividadAdmin extends AppCompatActivity {
         gestionarUsuariosSpinner.setAdapter(gestionarUsuariosSpinnerAdapter);
         gestionarTiposSeguroSpinner.setAdapter(gestionarTiposSeguroSpinnerAdapter);
 
-        final Button botonBorrarUsuario = findViewById(R.id.administracion_6);
-        final Button botonHacerVendedor = findViewById(R.id.administracion_7);
-        final Button botonVerUsuario = findViewById(R.id.administracion_8);
-        final Button botonCrearSeguro = findViewById(R.id.administracion_9);
+        botonBorrarUsuario = findViewById(R.id.administracion_6);
+        botonHacerVendedor = findViewById(R.id.administracion_7);
+        botonVerUsuario = findViewById(R.id.administracion_8);
+        botonCrearSeguro = findViewById(R.id.administracion_9);
 
         gestionarUsuariosSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -70,19 +74,7 @@ public class ActividadAdmin extends AppCompatActivity {
                 String dniUsuarioSeleccionado = (String) parent.getSelectedItem();
                 Usuario usuario = db.usuarioDao().find(dniUsuarioSeleccionado);
 
-                if (usuario == null)
-                    return;
-
-                if (usuario.getIdTipoUsuario() == ID_USUARIO_VENDEDOR) {
-                    botonCrearSeguro.setEnabled(false);
-                    botonHacerVendedor.setEnabled(false);
-                } else {
-                    botonCrearSeguro.setEnabled(true);
-                    botonHacerVendedor.setEnabled(true);
-                }
-
-                botonBorrarUsuario.setEnabled(true);
-                botonVerUsuario.setEnabled(true);
+                actualizarBotonesUsuario(usuario);
             }
 
             @Override
@@ -123,6 +115,10 @@ public class ActividadAdmin extends AppCompatActivity {
                     // actualizar el spinner
                     gestionarUsuariosSpinnerAdapter.remove(dniUsuarioSeleccionado);
 
+                    // tiene que ser dependiendo del siguiente usuario seleccionado
+                    // en vez de el que acabamos de eliminar
+                    actualizarBotonesUsuario();
+
                     Toast.makeText(
                             v.getContext(),
                             "Se ha borrado el usuario seleccionado correctamente",
@@ -149,8 +145,8 @@ public class ActividadAdmin extends AppCompatActivity {
 
                     db.usuarioDao().update(usuario);
 
-                    botonCrearSeguro.setEnabled(false);
-                    botonHacerVendedor.setEnabled(false);
+                    // actualizar el spinner
+                    actualizarBotonesUsuario(usuario);
 
                     Toast.makeText(
                             v.getContext(),
@@ -281,8 +277,37 @@ public class ActividadAdmin extends AppCompatActivity {
             gestionarUsuariosSpinnerAdapter.add(usuario.getDni());
         }
 
+        actualizarBotonesUsuario();
+
         for (TipoSeguro tipoSeguro : tiposSeguroExistentes) {
             gestionarTiposSeguroSpinnerAdapter.add(tipoSeguro.getTipo());
+        }
+    }
+
+    private void actualizarBotonesUsuario() {
+        String dniUsuarioSeleccionado = (String) gestionarUsuariosSpinner.getSelectedItem();
+        Usuario usuario = db.usuarioDao().find(dniUsuarioSeleccionado);
+
+        actualizarBotonesUsuario(usuario);
+    }
+
+    private void actualizarBotonesUsuario(Usuario usuario) {
+        if (usuario != null) {
+            if (usuario.getIdTipoUsuario() == ID_USUARIO_VENDEDOR) {
+                botonCrearSeguro.setEnabled(false);
+                botonHacerVendedor.setEnabled(false);
+            } else {
+                botonCrearSeguro.setEnabled(true);
+                botonHacerVendedor.setEnabled(true);
+            }
+
+            botonBorrarUsuario.setEnabled(true);
+            botonVerUsuario.setEnabled(true);
+        } else {
+            botonCrearSeguro.setEnabled(false);
+            botonHacerVendedor.setEnabled(false);
+            botonVerUsuario.setEnabled(false);
+            botonBorrarUsuario.setEnabled(false);
         }
     }
 }
