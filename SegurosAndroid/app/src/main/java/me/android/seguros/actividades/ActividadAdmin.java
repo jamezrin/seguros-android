@@ -270,10 +270,6 @@ public class ActividadAdmin extends AppCompatActivity {
         List<TipoSeguro> tiposSeguroExistentes = db.tipoSeguroDao().getBorrados(false);
 
         for (Usuario usuario : usuariosExistentes) {
-            // no listar los administradores
-            if (usuario.getIdTipoUsuario() == ID_USUARIO_ADMIN)
-                continue;
-
             gestionarUsuariosSpinnerAdapter.add(usuario.getDni());
         }
 
@@ -293,15 +289,22 @@ public class ActividadAdmin extends AppCompatActivity {
 
     private void actualizarBotonesUsuario(Usuario usuario) {
         if (usuario != null) {
-            if (usuario.getIdTipoUsuario() == ID_USUARIO_VENDEDOR) {
+            if (usuario.getIdTipoUsuario() == ID_USUARIO_VENDEDOR
+                    || usuario.getIdTipoUsuario() == ID_USUARIO_ADMIN) {
                 botonCrearSeguro.setEnabled(false);
                 botonHacerVendedor.setEnabled(false);
+
+                if (usuario.getIdTipoUsuario() == ID_USUARIO_ADMIN) {
+                    botonBorrarUsuario.setEnabled(false);
+                } else {
+                    botonBorrarUsuario.setEnabled(true);
+                }
             } else {
                 botonCrearSeguro.setEnabled(true);
                 botonHacerVendedor.setEnabled(true);
+                botonBorrarUsuario.setEnabled(true);
             }
 
-            botonBorrarUsuario.setEnabled(true);
             botonVerUsuario.setEnabled(true);
         } else {
             botonCrearSeguro.setEnabled(false);
