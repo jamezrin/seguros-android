@@ -14,6 +14,10 @@ import me.android.seguros.datos.AppDatabaseWrapper;
 import me.android.seguros.datos.modelos.TipoUsuario;
 import me.android.seguros.datos.modelos.relaciones.UsuarioConTodo;
 
+import static me.android.seguros.datos.modelos.Usuario.ID_USUARIO_ADMIN;
+import static me.android.seguros.datos.modelos.Usuario.ID_USUARIO_CLIENTE;
+import static me.android.seguros.datos.modelos.Usuario.ID_USUARIO_VENDEDOR;
+
 public class ActividadLogin extends AppCompatActivity {
 
     @Override
@@ -57,11 +61,11 @@ public class ActividadLogin extends AppCompatActivity {
 
     private Class<? extends AppCompatActivity> mapearTipoUsuarioActividad(TipoUsuario tipoUsuario) {
         switch (tipoUsuario.getId()) {
-            case 1:
+            case ID_USUARIO_CLIENTE:
                 return ActividadCliente.class;
-            case 2:
+            case ID_USUARIO_VENDEDOR:
                 return ActividadVendedor.class;
-            case 3:
+            case ID_USUARIO_ADMIN:
                 return ActividadAdmin.class;
             default:
                 return null;
