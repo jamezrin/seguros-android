@@ -23,6 +23,9 @@ import static me.android.seguros.datos.modelos.Usuario.ID_USUARIO_CLIENTE;
 
 public class ActividadVendedor extends AppCompatActivity {
     private AppDatabase db = null;
+
+    private ArrayAdapter<String> spinnerUsuariosAdapter = null;
+
     private String dniUsuario = null;
     private EditText crearUsuariosCampoDni = null;
     private Spinner spinnerUsuarios = null;
@@ -37,12 +40,33 @@ public class ActividadVendedor extends AppCompatActivity {
         crearUsuariosCampoDni = findViewById(R.id.vendedor_2);
         spinnerUsuarios = findViewById(R.id.vendedor_5);
 
-        final ArrayAdapter<String> spinnerUsuariosAdapter = new ArrayAdapter<>(
+        spinnerUsuariosAdapter = new ArrayAdapter<>(
                 this,
                 R.layout.support_simple_spinner_dropdown_item
         );
 
         spinnerUsuarios.setAdapter(spinnerUsuariosAdapter);
+
+        actualizarSpinners();
+
+        findViewById(R.id.vendedor_3).setOnClickListener(new BotonCrearUsuarioListener());
+
+        findViewById(R.id.vendedor_6).setOnClickListener(new BotonCrearSeguroListener());
+
+        findViewById(R.id.vendedor_7).setOnClickListener(new BotonVerUsuarioListener());
+
+        findViewById(R.id.vendedor_8).setOnClickListener(new BotonVerDatosListener());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        actualizarSpinners();
+    }
+
+    private void actualizarSpinners() {
+        spinnerUsuariosAdapter.clear();
 
         List<Usuario> usuariosExistentes = db.usuarioDao().getBorrados(false);
 
@@ -53,14 +77,6 @@ public class ActividadVendedor extends AppCompatActivity {
 
             spinnerUsuariosAdapter.add(usuario.getDni());
         }
-
-        findViewById(R.id.vendedor_3).setOnClickListener(new BotonCrearUsuarioListener());
-
-        findViewById(R.id.vendedor_6).setOnClickListener(new BotonCrearSeguroListener());
-
-        findViewById(R.id.vendedor_7).setOnClickListener(new BotonVerUsuarioListener());
-
-        findViewById(R.id.vendedor_8).setOnClickListener(new BotonVerDatosListener());
     }
 
     private class BotonVerDatosListener implements View.OnClickListener {
