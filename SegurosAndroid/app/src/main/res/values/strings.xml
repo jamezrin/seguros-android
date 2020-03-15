@@ -29,4 +29,7 @@
     <string name="campo_tipo_seguro">Tipo seguro</string>
     <string name="accion_guardar_cambios">Guardar cambios</string>
     <string name="accion_volver_atras">Volver atrás</string>
+    <string name="titulo_vendedor">Vendedor</string>
+    <string name="subtitulo_crear_usuarios">Crear usuarios</string>
+    <string name="accion_ver_tus_datos">Ver tus datos</string>
 </resources>
