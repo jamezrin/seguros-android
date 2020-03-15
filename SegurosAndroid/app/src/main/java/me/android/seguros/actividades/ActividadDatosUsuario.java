@@ -18,6 +18,15 @@ import static me.android.seguros.datos.modelos.Usuario.ID_USUARIO_CLIENTE;
 public class ActividadDatosUsuario extends AppCompatActivity {
     private Usuario usuarioActual = null;
     private AppDatabase db = null;
+    private EditText campoDni = null;
+    private EditText campoNombre = null;
+    private EditText campoApellidos = null;
+    private EditText campoDireccion = null;
+    private EditText campoTelefono = null;
+    private EditText campoContrasena = null;
+    private EditText campoTipoUsuario = null;
+    private String dniUsuario = null;
+    private boolean accionCrear = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,19 +34,19 @@ public class ActividadDatosUsuario extends AppCompatActivity {
         setContentView(R.layout.activity_actividad_datos_usuario);
         db = AppDatabaseWrapper.get();
 
-        final EditText campoDni = findViewById(R.id.datos_usuario_2);
-        final EditText campoNombre = findViewById(R.id.datos_usuario_4);
-        final EditText campoApellidos = findViewById(R.id.datos_usuario_6);
-        final EditText campoDireccion = findViewById(R.id.datos_usuario_8);
-        final EditText campoTelefono = findViewById(R.id.datos_usuario_10);
-        final EditText campoContrasena = findViewById(R.id.datos_usuario_12);
-        final EditText campoTipoUsuario = findViewById(R.id.datos_usuario_14);
+        campoDni = findViewById(R.id.datos_usuario_2);
+        campoNombre = findViewById(R.id.datos_usuario_4);
+        campoApellidos = findViewById(R.id.datos_usuario_6);
+        campoDireccion = findViewById(R.id.datos_usuario_8);
+        campoTelefono = findViewById(R.id.datos_usuario_10);
+        campoContrasena = findViewById(R.id.datos_usuario_12);
+        campoTipoUsuario = findViewById(R.id.datos_usuario_14);
 
-        final String dniUsuario = getIntent().getStringExtra("dni_usuario");
+        dniUsuario = getIntent().getStringExtra("dni_usuario");
 
         campoDni.setText(dniUsuario);
 
-        final boolean accionCrear = getIntent().getBooleanExtra("accion_crear", false);
+        accionCrear = getIntent().getBooleanExtra("accion_crear", false);
 
         if (!accionCrear) {
             usuarioActual = db.usuarioDao().find(dniUsuario);
@@ -55,43 +64,47 @@ public class ActividadDatosUsuario extends AppCompatActivity {
         TipoUsuario tipoUsuario = db.tipoUsuarioDao().findById(usuarioActual.getIdTipoUsuario());
         campoTipoUsuario.setText(tipoUsuario.getTipo());
 
-        findViewById(R.id.datos_usuario_15).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                usuarioActual.setNombre(campoNombre.getText().toString());
-                usuarioActual.setApellidos(campoApellidos.getText().toString());
-                usuarioActual.setDireccion(campoDireccion.getText().toString());
-                usuarioActual.setTelefono(campoTelefono.getText().toString());
-                usuarioActual.setContrasena(campoContrasena.getText().toString());
-                usuarioActual.setBorrado(false);
+        findViewById(R.id.datos_usuario_15).setOnClickListener(new BotonGuardarCambiosListener());
 
-                if (accionCrear) {
-                    db.usuarioDao().insertAll(usuarioActual);
-                    Toast.makeText(
-                            v.getContext(),
-                            "Se ha creado el usuario correctamente",
-                            Toast.LENGTH_SHORT
-                    ).show();
-                } else {
-                    db.usuarioDao().update(usuarioActual);
-                    Toast.makeText(
-                            v.getContext(),
-                            "Se ha actualizado el usuario correctamente",
-                            Toast.LENGTH_SHORT
-                    ).show();
-                }
+        findViewById(R.id.datos_usuario_16).setOnClickListener(new BotonVolverAtrasListener());
+    }
 
-                // sale de la actividad
-                ActividadDatosUsuario.this.finish();
+    private class BotonGuardarCambiosListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            usuarioActual.setNombre(campoNombre.getText().toString());
+            usuarioActual.setApellidos(campoApellidos.getText().toString());
+            usuarioActual.setDireccion(campoDireccion.getText().toString());
+            usuarioActual.setTelefono(campoTelefono.getText().toString());
+            usuarioActual.setContrasena(campoContrasena.getText().toString());
+            usuarioActual.setBorrado(false);
+
+            if (accionCrear) {
+                db.usuarioDao().insertAll(usuarioActual);
+                Toast.makeText(
+                        v.getContext(),
+                        "Se ha creado el usuario correctamente",
+                        Toast.LENGTH_SHORT
+                ).show();
+            } else {
+                db.usuarioDao().update(usuarioActual);
+                Toast.makeText(
+                        v.getContext(),
+                        "Se ha actualizado el usuario correctamente",
+                        Toast.LENGTH_SHORT
+                ).show();
             }
-        });
 
-        findViewById(R.id.datos_usuario_16).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // sale de la actividad
-                ActividadDatosUsuario.this.finish();
-            }
-        });
+            // sale de la actividad
+            ActividadDatosUsuario.this.finish();
+        }
+    }
+
+    private class BotonVolverAtrasListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            // sale de la actividad
+            ActividadDatosUsuario.this.finish();
+        }
     }
 }
