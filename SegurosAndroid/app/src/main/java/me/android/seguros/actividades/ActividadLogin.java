@@ -19,7 +19,6 @@ import static me.android.seguros.datos.modelos.Usuario.ID_USUARIO_CLIENTE;
 import static me.android.seguros.datos.modelos.Usuario.ID_USUARIO_VENDEDOR;
 
 public class ActividadLogin extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

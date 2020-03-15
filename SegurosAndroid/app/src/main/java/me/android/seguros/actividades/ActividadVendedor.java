@@ -15,10 +15,8 @@ import java.util.List;
 import me.android.seguros.R;
 import me.android.seguros.datos.AppDatabase;
 import me.android.seguros.datos.AppDatabaseWrapper;
-import me.android.seguros.datos.modelos.TipoSeguro;
 import me.android.seguros.datos.modelos.Usuario;
 
-import static me.android.seguros.datos.modelos.Usuario.ID_USUARIO_ADMIN;
 import static me.android.seguros.datos.modelos.Usuario.ID_USUARIO_CLIENTE;
 
 public class ActividadVendedor extends AppCompatActivity {
