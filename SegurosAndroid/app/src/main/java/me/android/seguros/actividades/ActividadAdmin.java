@@ -94,9 +94,20 @@ public class ActividadAdmin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!crearUsuariosCampoDni.getText().toString().trim().equals("")) {
-                    Intent intent = new Intent(v.getContext(), ActividadDatosUsuario.class);
-                    intent.putExtra("dni_usuario", crearUsuariosCampoDni.getText().toString());
-                    startActivity(intent);
+                    Usuario usuario = db.usuarioDao().find(crearUsuariosCampoDni.getText().toString());
+
+                    if (usuario == null) {
+                        Intent intent = new Intent(v.getContext(), ActividadDatosUsuario.class);
+                        intent.putExtra("dni_usuario", crearUsuariosCampoDni.getText().toString());
+                        intent.putExtra("accion_crear", true);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(
+                                v.getContext(),
+                                "Ya existe un usuario con ese DNI",
+                                Toast.LENGTH_SHORT
+                        ).show();
+                    }
                 } else {
                     crearUsuariosCampoDni.setError("Este campo es necesario");
                 }
@@ -174,6 +185,7 @@ public class ActividadAdmin extends AppCompatActivity {
                 if (usuario != null) {
                     Intent intent = new Intent(v.getContext(), ActividadDatosUsuario.class);
                     intent.putExtra("dni_usuario", dniUsuarioSeleccionado);
+                    intent.putExtra("accion_crear", false);
                     startActivity(intent);
                 } else {
                     Toast.makeText(

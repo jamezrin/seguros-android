@@ -34,35 +34,30 @@ public class ActividadDatosUsuario extends AppCompatActivity {
         final EditText campoTipoUsuario = findViewById(R.id.datos_usuario_14);
 
         final String dniUsuario = getIntent().getStringExtra("dni_usuario");
+
         campoDni.setText(dniUsuario);
 
-        usuarioActual = db.usuarioDao().find(dniUsuario);
+        final boolean accionCrear = getIntent().getBooleanExtra("accion_crear", false);
 
-        if (usuarioActual != null) {
+        if (!accionCrear) {
+            usuarioActual = db.usuarioDao().find(dniUsuario);
             campoNombre.setText(usuarioActual.getNombre());
             campoApellidos.setText(usuarioActual.getApellidos());
             campoDireccion.setText(usuarioActual.getDireccion());
             campoTelefono.setText(usuarioActual.getTelefono());
             campoContrasena.setText(usuarioActual.getContrasena());
-
-            TipoUsuario tipoUsuario = db.tipoUsuarioDao().findById(usuarioActual.getIdTipoUsuario());
-            campoTipoUsuario.setText(tipoUsuario.getTipo());
         } else {
-            TipoUsuario tipoUsuario = db.tipoUsuarioDao().findById(ID_USUARIO_CLIENTE);
-            campoTipoUsuario.setText(tipoUsuario.getTipo());
+            assert dniUsuario != null;
+            usuarioActual = new Usuario(dniUsuario);
+            usuarioActual.setIdTipoUsuario(ID_USUARIO_CLIENTE);
         }
+
+        TipoUsuario tipoUsuario = db.tipoUsuarioDao().findById(usuarioActual.getIdTipoUsuario());
+        campoTipoUsuario.setText(tipoUsuario.getTipo());
 
         findViewById(R.id.datos_usuario_15).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean usuarioExistente = (usuarioActual != null);
-
-                if (!usuarioExistente) {
-                    assert dniUsuario != null;
-                    usuarioActual = new Usuario(dniUsuario);
-                    usuarioActual.setIdTipoUsuario(ID_USUARIO_CLIENTE);
-                }
-
                 usuarioActual.setNombre(campoNombre.getText().toString());
                 usuarioActual.setApellidos(campoApellidos.getText().toString());
                 usuarioActual.setDireccion(campoDireccion.getText().toString());
@@ -70,18 +65,18 @@ public class ActividadDatosUsuario extends AppCompatActivity {
                 usuarioActual.setContrasena(campoContrasena.getText().toString());
                 usuarioActual.setBorrado(false);
 
-                if (usuarioExistente) {
-                    db.usuarioDao().update(usuarioActual);
-                    Toast.makeText(
-                            v.getContext(),
-                            "Se ha actualizado el usuario correctamente",
-                            Toast.LENGTH_SHORT
-                    ).show();
-                } else {
+                if (accionCrear) {
                     db.usuarioDao().insertAll(usuarioActual);
                     Toast.makeText(
                             v.getContext(),
                             "Se ha creado el usuario correctamente",
+                            Toast.LENGTH_SHORT
+                    ).show();
+                } else {
+                    db.usuarioDao().update(usuarioActual);
+                    Toast.makeText(
+                            v.getContext(),
+                            "Se ha actualizado el usuario correctamente",
                             Toast.LENGTH_SHORT
                     ).show();
                 }
