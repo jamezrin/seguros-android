@@ -274,9 +274,17 @@ public class ActividadAdmin extends AppCompatActivity {
         public void onClick(View v) {
             String dniUsuarioSeleccionado = (String) gestionarUsuariosSpinner.getSelectedItem();
 
-            Intent intent = new Intent(v.getContext(), ActividadCrearSeguroUsuario.class);
-            intent.putExtra("dni_usuario", dniUsuarioSeleccionado);
-            startActivity(intent);
+            if (dniUsuarioSeleccionado != null) {
+                Intent intent = new Intent(v.getContext(), ActividadCrearSeguroUsuario.class);
+                intent.putExtra("dni_usuario", dniUsuarioSeleccionado);
+                startActivity(intent);
+            }else{
+                Toast.makeText(
+                        v.getContext(),
+                        "No se ha podido añadir seguro al usuario",
+                        Toast.LENGTH_SHORT
+                ).show();;
+            }
         }
     }
     // Añade un seguro nuevo a la base de datos.
