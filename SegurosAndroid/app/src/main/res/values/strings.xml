@@ -17,6 +17,7 @@
     <string name="nombre_tipo_seguro">Nombre de tipo de seguro</string>
     <string name="nombre_de_usuario">Nombre de usuario</string>
     <string name="crear_seguro">Crear seguro</string>
+
     <!--Strings cliente-->
     <string name="titulo_cliente">Cliente</string>
     <string name="subtitulo_seguros_contratados">Seguros contratados</string>
@@ -39,4 +40,10 @@
     <string name="campo_telefono">Telefono</string>
     <string name="campo_contrasena">Contraseña</string>
     <string name="campo_tipo_de_usuario">Tipo de Usuario</string>
+    <string name="accion_dar_de_baja">Dar de baja</string>
+    <string name="accion_volver_atr_s">Volver atrás</string>
+    <string name="campo_fecha_de_alta">Fecha de alta</string>
+    <string name="campo_numero_de_poliza">Numero de poliza</string>
+    <string name="campo_tipo">Tipo</string>
+    <string name="titulo_informaci_n_de_seguro">Información de Seguro</string>
 </resources>
