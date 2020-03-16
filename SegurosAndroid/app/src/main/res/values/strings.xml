@@ -6,7 +6,7 @@
     <string name="accion_iniciar_sesion">Iniciar sesión</string>
     <string name="accion_borrar">Borrar</string>
     <string name="seccion_crear_tipos">Crear tipo de seguros</string>
-    <string name="accion_anadir">Añadir</string>
+    <string name="accion_anadir">Añadir seguro</string>
     <string name="administracion">Administración</string>
     <string name="accion_crear_usuario">Crear usuario</string>
     <string name="accion_ver_usuario">Ver usuario</string>

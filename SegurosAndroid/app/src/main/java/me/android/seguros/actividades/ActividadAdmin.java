@@ -88,189 +88,24 @@ public class ActividadAdmin extends AppCompatActivity {
 
         actualizarSpinners();
 
-        findViewById(R.id.administracion_3).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!crearUsuariosCampoDni.getText().toString().trim().equals("")) {
-                    Usuario usuario = db.usuarioDao().find(crearUsuariosCampoDni.getText().toString());
+        findViewById(R.id.administracion_3).setOnClickListener(new BotonCrearUsuarioListener());
 
-                    if (usuario == null) {
-                        Intent intent = new Intent(v.getContext(), ActividadDatosUsuario.class);
-                        intent.putExtra("dni_usuario", crearUsuariosCampoDni.getText().toString());
-                        intent.putExtra("accion_crear", true);
-                        startActivity(intent);
-                    } else {
-                        Toast.makeText(
-                                v.getContext(),
-                                "Ya existe un usuario con ese DNI",
-                                Toast.LENGTH_SHORT
-                        ).show();
-                    }
-                } else {
-                    crearUsuariosCampoDni.setError("Este campo es necesario");
-                }
-            }
-        });
+        findViewById(R.id.administracion_6).setOnClickListener(new BotonBorrarUsuarioListener());
 
-        findViewById(R.id.administracion_6).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String dniUsuarioSeleccionado = (String) gestionarUsuariosSpinner.getSelectedItem();
-                Usuario usuario = db.usuarioDao().find(dniUsuarioSeleccionado);
+        findViewById(R.id.administracion_7).setOnClickListener(new BotonHacerVendedorListener());
 
-                if (usuario != null) {
-                    usuario.setBorrado(true);
+        findViewById(R.id.administracion_8).setOnClickListener(new BotonVerUsuarioListener());
 
-                    db.usuarioDao().update(usuario);
+        findViewById(R.id.administracion_9).setOnClickListener(new BotonCrearSeguroListener());
 
-                    // actualizar el spinner
-                    gestionarUsuariosSpinnerAdapter.remove(dniUsuarioSeleccionado);
+        findViewById(R.id.administracion_12).setOnClickListener(new BotonAnadirSeguroListener());
 
-                    // tiene que ser dependiendo del siguiente usuario seleccionado
-                    // en vez de el que acabamos de eliminar
-                    actualizarBotonesUsuario();
-
-                    Toast.makeText(
-                            v.getContext(),
-                            "Se ha borrado el usuario seleccionado correctamente",
-                            Toast.LENGTH_SHORT
-                    ).show();
-                } else {
-                    Toast.makeText(
-                            v.getContext(),
-                            "No se ha podido encontrar a ese usuario",
-                            Toast.LENGTH_SHORT
-                    ).show();
-                }
-            }
-        });
-
-        findViewById(R.id.administracion_7).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String dniUsuarioSeleccionado = (String) gestionarUsuariosSpinner.getSelectedItem();
-                Usuario usuario = db.usuarioDao().find(dniUsuarioSeleccionado);
-
-                if (usuario != null) {
-                    usuario.setIdTipoUsuario(ID_USUARIO_VENDEDOR);
-
-                    db.usuarioDao().update(usuario);
-
-                    // actualizar el spinner
-                    actualizarBotonesUsuario(usuario);
-
-                    Toast.makeText(
-                            v.getContext(),
-                            "Se ha puesto a " + usuario.getDni() + " como vendedor",
-                            Toast.LENGTH_SHORT
-                    ).show();
-                } else {
-                    Toast.makeText(
-                            v.getContext(),
-                            "No se ha podido encontrar a ese usuario",
-                            Toast.LENGTH_SHORT
-                    ).show();
-                }
-            }
-        });
-
-        findViewById(R.id.administracion_8).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String dniUsuarioSeleccionado = (String) gestionarUsuariosSpinner.getSelectedItem();
-                Usuario usuario = db.usuarioDao().find(dniUsuarioSeleccionado);
-
-                if (usuario != null) {
-                    Intent intent = new Intent(v.getContext(), ActividadDatosUsuario.class);
-                    intent.putExtra("dni_usuario", dniUsuarioSeleccionado);
-                    intent.putExtra("accion_crear", false);
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(
-                            v.getContext(),
-                            "No se ha podido encontrar a ese usuario",
-                            Toast.LENGTH_SHORT
-                    ).show();
-                }
-            }
-        });
-
-        findViewById(R.id.administracion_9).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String dniUsuarioSeleccionado = (String) gestionarUsuariosSpinner.getSelectedItem();
-
-                Intent intent = new Intent(v.getContext(), ActividadCrearSeguroUsuario.class);
-                intent.putExtra("dni_usuario", dniUsuarioSeleccionado);
-                startActivity(intent);
-            }
-        });
-
-        findViewById(R.id.administracion_12).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!crearTipoSeguroCampoNombre.getText().toString().trim().equals("")) {
-                    TipoSeguro tipoSeguro = new TipoSeguro();
-                    tipoSeguro.setTipo(crearTipoSeguroCampoNombre.getText().toString());
-                    tipoSeguro.setBorrado(false);
-
-                    try {
-                        db.tipoSeguroDao().insertAll(tipoSeguro);
-
-                        // actualiza el spinner
-                        gestionarTiposSeguroSpinnerAdapter.add(tipoSeguro.getTipo());
-
-                        Toast.makeText(
-                                v.getContext(),
-                                "Tipo de seguro creado correctamente",
-                                Toast.LENGTH_SHORT
-                        ).show();
-                    } catch (SQLiteConstraintException e) {
-                        Toast.makeText(
-                                v.getContext(),
-                                "Ya existe ese tipo de seguro",
-                                Toast.LENGTH_SHORT
-                        ).show();
-                    }
-                } else {
-                    crearTipoSeguroCampoNombre.setError("Este campo es necesario");
-                }
-            }
-        });
-
-        findViewById(R.id.administracion_15).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String tipoSeguroSeleccionado = (String) gestionarTiposSeguroSpinner.getSelectedItem();
-                TipoSeguro tipoSeguro = db.tipoSeguroDao().findByName(tipoSeguroSeleccionado);
-
-                if (tipoSeguro != null) {
-                    tipoSeguro.setBorrado(true);
-                    db.tipoSeguroDao().update(tipoSeguro);
-
-                    // actualiza el spinner
-                    gestionarTiposSeguroSpinnerAdapter.remove(tipoSeguro.getTipo());
-
-                    Toast.makeText(
-                            v.getContext(),
-                            "Tipo de seguro eliminado correctamente",
-                            Toast.LENGTH_SHORT
-                    ).show();
-                } else {
-                    Toast.makeText(
-                            v.getContext(),
-                            "No se ha podido encontrar ese tipo de seguro",
-                            Toast.LENGTH_SHORT
-                    ).show();
-                }
-            }
-        });
+        findViewById(R.id.administracion_15).setOnClickListener(new BotonBorrarSeguroListener());
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-
         actualizarSpinners();
     }
 
@@ -323,6 +158,185 @@ public class ActividadAdmin extends AppCompatActivity {
             botonHacerVendedor.setEnabled(false);
             botonVerUsuario.setEnabled(false);
             botonBorrarUsuario.setEnabled(false);
+        }
+    }
+
+    private class BotonCrearUsuarioListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            if (!crearUsuariosCampoDni.getText().toString().trim().equals("")) {
+                Usuario usuario = db.usuarioDao().find(crearUsuariosCampoDni.getText().toString());
+
+                if (usuario == null) {
+                    Intent intent = new Intent(v.getContext(), ActividadDatosUsuario.class);
+                    intent.putExtra("dni_usuario", crearUsuariosCampoDni.getText().toString());
+                    intent.putExtra("accion_crear", true);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(
+                            v.getContext(),
+                            "Ya existe un usuario con ese DNI",
+                            Toast.LENGTH_SHORT
+                    ).show();
+                }
+            } else {
+                crearUsuariosCampoDni.setError("Este campo es necesario");
+            }
+        }
+    }
+
+    private class BotonBorrarUsuarioListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            String dniUsuarioSeleccionado = (String) gestionarUsuariosSpinner.getSelectedItem();
+            Usuario usuario = db.usuarioDao().find(dniUsuarioSeleccionado);
+
+            if (usuario != null) {
+                usuario.setBorrado(true);
+
+                db.usuarioDao().update(usuario);
+
+                // actualizar el spinner
+                gestionarUsuariosSpinnerAdapter.remove(dniUsuarioSeleccionado);
+
+                // tiene que ser dependiendo del siguiente usuario seleccionado
+                // en vez de el que acabamos de eliminar
+                actualizarBotonesUsuario();
+
+                Toast.makeText(
+                        v.getContext(),
+                        "Se ha borrado el usuario seleccionado correctamente",
+                        Toast.LENGTH_SHORT
+                ).show();
+            } else {
+                Toast.makeText(
+                        v.getContext(),
+                        "No se ha podido encontrar a ese usuario",
+                        Toast.LENGTH_SHORT
+                ).show();
+            }
+        }
+    }
+
+    private class BotonHacerVendedorListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            String dniUsuarioSeleccionado = (String) gestionarUsuariosSpinner.getSelectedItem();
+            Usuario usuario = db.usuarioDao().find(dniUsuarioSeleccionado);
+
+            if (usuario != null) {
+                usuario.setIdTipoUsuario(ID_USUARIO_VENDEDOR);
+
+                db.usuarioDao().update(usuario);
+
+                // actualizar el spinner
+                actualizarBotonesUsuario(usuario);
+
+                Toast.makeText(
+                        v.getContext(),
+                        "Se ha puesto a " + usuario.getDni() + " como vendedor",
+                        Toast.LENGTH_SHORT
+                ).show();
+            } else {
+                Toast.makeText(
+                        v.getContext(),
+                        "No se ha podido encontrar a ese usuario",
+                        Toast.LENGTH_SHORT
+                ).show();
+            }
+        }
+    }
+
+    private class BotonVerUsuarioListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            String dniUsuarioSeleccionado = (String) gestionarUsuariosSpinner.getSelectedItem();
+            Usuario usuario = db.usuarioDao().find(dniUsuarioSeleccionado);
+
+            if (usuario != null) {
+                Intent intent = new Intent(v.getContext(), ActividadDatosUsuario.class);
+                intent.putExtra("dni_usuario", dniUsuarioSeleccionado);
+                intent.putExtra("accion_crear", false);
+                startActivity(intent);
+            } else {
+                Toast.makeText(
+                        v.getContext(),
+                        "No se ha podido encontrar a ese usuario",
+                        Toast.LENGTH_SHORT
+                ).show();
+            }
+        }
+    }
+
+    // Añade un seguro a un usuario.
+    private class BotonCrearSeguroListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            String dniUsuarioSeleccionado = (String) gestionarUsuariosSpinner.getSelectedItem();
+
+            Intent intent = new Intent(v.getContext(), ActividadCrearSeguroUsuario.class);
+            intent.putExtra("dni_usuario", dniUsuarioSeleccionado);
+            startActivity(intent);
+        }
+    }
+    // Añade un seguro nuevo a la base de datos.
+    private class BotonAnadirSeguroListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            if (!crearTipoSeguroCampoNombre.getText().toString().trim().equals("")) {
+                TipoSeguro tipoSeguro = new TipoSeguro();
+                tipoSeguro.setTipo(crearTipoSeguroCampoNombre.getText().toString());
+                tipoSeguro.setBorrado(false);
+
+                try {
+                    db.tipoSeguroDao().insertAll(tipoSeguro);
+
+                    // actualiza el spinner
+                    gestionarTiposSeguroSpinnerAdapter.add(tipoSeguro.getTipo());
+
+                    Toast.makeText(
+                            v.getContext(),
+                            "Tipo de seguro creado correctamente",
+                            Toast.LENGTH_SHORT
+                    ).show();
+                } catch (SQLiteConstraintException e) {
+                    Toast.makeText(
+                            v.getContext(),
+                            "Ya existe ese tipo de seguro",
+                            Toast.LENGTH_SHORT
+                    ).show();
+                }
+            } else {
+                crearTipoSeguroCampoNombre.setError("Este campo es necesario");
+            }
+        }
+    }
+
+    private class BotonBorrarSeguroListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            String tipoSeguroSeleccionado = (String) gestionarTiposSeguroSpinner.getSelectedItem();
+            TipoSeguro tipoSeguro = db.tipoSeguroDao().findByName(tipoSeguroSeleccionado);
+
+            if (tipoSeguro != null) {
+                tipoSeguro.setBorrado(true);
+                db.tipoSeguroDao().update(tipoSeguro);
+
+                // actualiza el spinner
+                gestionarTiposSeguroSpinnerAdapter.remove(tipoSeguro.getTipo());
+
+                Toast.makeText(
+                        v.getContext(),
+                        "Tipo de seguro eliminado correctamente",
+                        Toast.LENGTH_SHORT
+                ).show();
+            } else {
+                Toast.makeText(
+                        v.getContext(),
+                        "No se ha podido encontrar ese tipo de seguro",
+                        Toast.LENGTH_SHORT
+                ).show();
+            }
         }
     }
 }
