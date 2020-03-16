@@ -31,4 +31,12 @@
     <string name="titulo_vendedor">Vendedor</string>
     <string name="subtitulo_crear_usuarios">Crear usuarios</string>
     <string name="accion_ver_tus_datos">Ver tus datos</string>
+    <string name="titulo_datos_de_usuario">Datos de usuario</string>
+    <string name="campo_dni">DNI</string>
+    <string name="campo_nombre">Nombre</string>
+    <string name="campo_apellidos">Apellidos</string>
+    <string name="campo_direccion">Direccion</string>
+    <string name="campo_telefono">Telefono</string>
+    <string name="campo_contrasena">Contraseña</string>
+    <string name="campo_tipo_de_usuario">Tipo de Usuario</string>
 </resources>
