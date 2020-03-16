@@ -180,7 +180,7 @@ public class ActividadAdmin extends AppCompatActivity {
                     ).show();
                 }
             } else {
-                crearUsuariosCampoDni.setError("Este campo es necesario");
+                crearUsuariosCampoDni.setError(getString(R.string.campo_necesario));
             }
         }
     }
@@ -307,7 +307,7 @@ public class ActividadAdmin extends AppCompatActivity {
                     ).show();
                 }
             } else {
-                crearTipoSeguroCampoNombre.setError("Este campo es necesario");
+                crearTipoSeguroCampoNombre.setError(getString(R.string.campo_necesario));
             }
         }
     }

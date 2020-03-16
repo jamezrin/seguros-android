@@ -129,7 +129,7 @@ public class ActividadVendedor extends AppCompatActivity {
                     ).show();
                 }
             } else {
-                crearUsuariosCampoDni.setError("Este campo es necesario");
+                crearUsuariosCampoDni.setError(getString(R.string.campo_necesario));
             }
         }
     }

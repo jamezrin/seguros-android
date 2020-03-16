@@ -46,4 +46,5 @@
     <string name="campo_numero_de_poliza">Numero de poliza</string>
     <string name="campo_tipo">Tipo</string>
     <string name="titulo_informaci_n_de_seguro">Información de Seguro</string>
+    <string name="campo_necesario">Campo necesario</string>
 </resources>
