@@ -92,10 +92,12 @@ public class ActividadVendedor extends AppCompatActivity {
         public void onClick(View v) {
             String dniUsuarioSeleccionado = (String) spinnerUsuarios.getSelectedItem();
 
-            Intent intent = new Intent(v.getContext(), ActividadDatosUsuario.class);
-            intent.putExtra("dni_usuario", dniUsuarioSeleccionado);
-            intent.putExtra("accion_crear", false);
-            startActivity(intent);
+            if (dniUsuarioSeleccionado != null) {
+                Intent intent = new Intent(v.getContext(), ActividadDatosUsuario.class);
+                intent.putExtra("dni_usuario", dniUsuarioSeleccionado);
+                intent.putExtra("accion_crear", false);
+                startActivity(intent);
+            }
         }
     }
 
@@ -104,9 +106,11 @@ public class ActividadVendedor extends AppCompatActivity {
         public void onClick(View v) {
             String dniUsuarioSeleccionado = (String) spinnerUsuarios.getSelectedItem();
 
-            Intent intent = new Intent(v.getContext(), ActividadCrearSeguroUsuario.class);
-            intent.putExtra("dni_usuario", dniUsuarioSeleccionado);
-            startActivity(intent);
+            if (dniUsuarioSeleccionado != null) {
+                Intent intent = new Intent(v.getContext(), ActividadCrearSeguroUsuario.class);
+                intent.putExtra("dni_usuario", dniUsuarioSeleccionado);
+                startActivity(intent);
+            }
         }
     }
 

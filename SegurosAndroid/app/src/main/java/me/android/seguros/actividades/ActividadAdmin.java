@@ -129,9 +129,12 @@ public class ActividadAdmin extends AppCompatActivity {
 
     private void actualizarBotonesUsuario() {
         String dniUsuarioSeleccionado = (String) gestionarUsuariosSpinner.getSelectedItem();
-        Usuario usuario = db.usuarioDao().find(dniUsuarioSeleccionado);
 
-        actualizarBotonesUsuario(usuario);
+        if (dniUsuarioSeleccionado != null) {
+            Usuario usuario = db.usuarioDao().find(dniUsuarioSeleccionado);
+
+            actualizarBotonesUsuario(usuario);
+        }
     }
 
     private void actualizarBotonesUsuario(Usuario usuario) {
@@ -201,6 +204,7 @@ public class ActividadAdmin extends AppCompatActivity {
 
                 // tiene que ser dependiendo del siguiente usuario seleccionado
                 // en vez de el que acabamos de eliminar
+                gestionarUsuariosSpinner.setSelection(0);
                 actualizarBotonesUsuario();
 
                 Toast.makeText(
@@ -278,12 +282,12 @@ public class ActividadAdmin extends AppCompatActivity {
                 Intent intent = new Intent(v.getContext(), ActividadCrearSeguroUsuario.class);
                 intent.putExtra("dni_usuario", dniUsuarioSeleccionado);
                 startActivity(intent);
-            }else{
+            } else {
                 Toast.makeText(
                         v.getContext(),
                         "No se ha podido añadir seguro al usuario",
                         Toast.LENGTH_SHORT
-                ).show();;
+                ).show();
             }
         }
     }
